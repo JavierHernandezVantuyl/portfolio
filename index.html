@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Javier Hernandez Vantuyl — Portfolio</title>
+  <meta name="description" content="Cybersecurity & Atlassian specialist. I build tidy, secure systems and lightweight automations." />
+  <meta property="og:title" content="Javier Hernandez Vantuyl — Portfolio" />
+  <meta property="og:description" content="Cybersecurity & Atlassian specialist. I build tidy, secure systems and lightweight automations." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0f172a" />
+  <style>
+    :root {
+      --bg: #0b1020;          /* deep slate */
+      --panel: #0f172a;       /* slate-900 */
+      --muted: #94a3b8;       /* slate-400 */
+      --text: #e5e7eb;        /* gray-200 */
+      --brand: #38bdf8;       /* sky-400 */
+      --accent: #22c55e;      /* green-500 */
+      --ring: #475569;        /* slate-600 */
+      --radius: 16px;
+      --shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      color: var(--text); background: radial-gradient(1200px 600px at 50% -10%, rgba(56,189,248,0.08), transparent), var(--bg);
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 24px; }
+    .nav {
+      position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px);
+      background: rgba(11,16,32,0.6); border-bottom: 1px solid #1f2937;
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav a { padding: 8px 12px; border-radius: 10px; font-size: 14px; color: var(--muted); }
+    .nav a:hover { background: #111827; color: #fff; }
+
+    .hero { padding: 64px 0 32px; }
+    .chip { display:inline-flex; gap:8px; align-items:center; font-size:12px; color: var(--muted); border:1px solid #1f2937; padding:6px 10px; border-radius:999px; }
+    .title { font-size: clamp(28px, 4vw, 56px); font-weight: 800; margin: 12px 0 8px; }
+    .lead { color: var(--muted); font-size: clamp(14px, 2vw, 18px); max-width: 700px; }
+    .btns { display:flex; flex-wrap:wrap; gap:12px; margin-top: 18px; }
+    .btn { display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius: 12px; border:1px solid #1f2937; background:#0b1328; }
+    .btn:hover { border-color:#334155; }
+    .btn.primary { background: linear-gradient(135deg, #0ea5e9, #22c55e); color:#0b1020; font-weight:700; }
+
+    section { scroll-margin-top: 96px; padding: 28px 0 8px; }
+    h2 { font-size: 22px; margin: 0 0 14px; }
+
+    .grid { display:grid; gap:16px; }
+    .grid.cards { grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); }
+
+    .card { background: linear-gradient(180deg, rgba(15,23,42,0.9), rgba(15,23,42,0.75)); border:1px solid #1f2937; border-radius: var(--radius); box-shadow: var(--shadow); }
+    .card .body { padding: 18px; }
+    .muted { color: var(--muted); }
+    ul.clean { list-style: none; padding: 0; margin: 0; }
+    ul.bullets { padding-left: 18px; }
+
+    .row { display:flex; gap:12px; align-items:center; justify-content: space-between; }
+    .pill { display:inline-block; padding:6px 10px; border:1px solid #233047; border-radius:999px; font-size:12px; color: #cbd5e1; }
+
+    .contact form { display:grid; gap:10px; }
+    input, textarea { width:100%; padding:12px 14px; border-radius:12px; border:1px solid #1f2937; background:#0b1328; color:var(--text); outline:none; }
+    input:focus, textarea:focus { border-color:#334155; box-shadow: 0 0 0 4px rgba(51,65,85,0.35); }
+    textarea { min-height: 120px; resize: vertical; }
+    .footer { border-top: 1px solid #1f2937; margin-top: 28px; padding: 22px 0; color: var(--muted); font-size: 14px; }
+
+    @media (min-width: 800px){ .split { display:grid; grid-template-columns: 2fr 1fr; gap:16px; } }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#home" style="font-weight:700;color:#fff">Javier H. Vantuyl</a>
+      <nav class="row" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="container">
+    <section class="hero" aria-labelledby="intro">
+      <span class="chip" aria-label="status">ISO 27001 • Remote‑first</span>
+      <h1 id="intro" class="title">Javier Hernandez Vantuyl</h1>
+      <p class="lead">Cybersecurity & Atlassian specialist. I turn messy access paths into clean, auditable flows and ship lightweight infra that just works.</p>
+      <div class="btns">
+        <a class="btn primary" href="resume.pdf" target="_blank" rel="noreferrer">Download résumé</a>
+        <a class="btn" href="mailto:you@example.com">Email me</a>
+        <a class="btn" href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="btn" href="https://github.com/YOUR-GITHUB" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-head">
+      <h2 id="about-head">About</h2>
+      <div class="split">
+        <div class="card"><div class="body">
+          <p class="muted">I enjoy building tidy, secure systems, automating access, and keeping processes simple. Based in the U.S.; open to remote‑first teams worldwide.</p>
+        </div></div>
+        <div class="card"><div class="body">
+          <div class="row"><span class="muted">Email</span><a class="pill" href="mailto:you@example.com">you@example.com</a></div>
+          <div class="row" style="margin-top:8px"><span class="muted">Location</span><span class="pill">USA (CST)</span></div>
+          <div class="row" style="margin-top:8px"><span class="muted">Open to</span><span class="pill">Security • GRC • IT Ops • Atlassian</span></div>
+        </div></div>
+      </div>
+    </section>
+
+    <section id="experience" aria-labelledby="exp-head">
+      <h2 id="exp-head">Experience</h2>
+      <div class="grid cards">
+        <article class="card"><div class="body">
+          <div class="row"><strong>IT Helpdesk Specialist</strong><span class="muted">2025 — Present</span></div>
+          <p class="muted">Own T1/2 support, device lifecycle, and SaaS access provisioning. Reduced backlog with SOPs & light automation (Intune/Entra).</p>
+        </div></article>
+        <article class="card"><div class="body">
+          <div class="row"><strong>Cybersecurity Monitoring (Intern)</strong><span class="muted">2023 — 2024</span></div>
+          <p class="muted">Assisted alert triage, playbook tuning, and compliance checks. Helped prep audit evidence (ISO 27001/SOC 2).</p>
+        </div></article>
+        <article class="card"><div class="body">
+          <div class="row"><strong>Atlassian Admin (Freelance)</strong><span class="muted">2024 — 2025</span></div>
+          <p class="muted">Streamlined Jira/Confluence projects, permissions, and automations. Built dashboards & intake forms to speed throughput.</p>
+        </div></article>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="proj-head">
+      <h2 id="proj-head">Selected Projects</h2>
+      <div class="grid cards">
+        <article class="card"><div class="body">
+          <strong>Access‑as‑a‑Switch (People Team)</strong>
+          <p class="muted">Pre‑provisioned Entra groups as a single switch for access. On/offboarding automated via ConductorOne.</p>
+          <a class="pill" href="#">Case study</a>
+        </div></article>
+        <article class="card"><div class="body">
+          <strong>Milo — Accountability Bot</strong>
+          <p class="muted">Tracks streaks, posts daily check‑ins, supports light admin verification to drive habit consistency.</p>
+          <a class="pill" href="#">Read more</a>
+        </div></article>
+        <article class="card"><div class="body">
+          <strong>PR Ephemeral Environments</strong>
+          <p class="muted">Spin up AWS Lambda + API GW stacks on pull requests; tear them down on close. Free‑tier friendly infra.</p>
+          <a class="pill" href="#">Repository</a>
+        </div></article>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-head">
+      <h2 id="contact-head">Contact</h2>
+      <div class="grid cards">
+        <div class="card"><div class="body">
+          <form onsubmit="submitContact(event)">
+            <input name="name" placeholder="Your name" required />
+            <input name="email" type="email" placeholder="Your email" required />
+            <textarea name="message" placeholder="How can I help?" required></textarea>
+            <button class="btn" type="submit">Send (opens your email app)</button>
+          </form>
+        </div></div>
+        <div class="card"><div class="body">
+          <p class="muted">Prefer DM?</p>
+          <p><a class="pill" href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noreferrer">LinkedIn</a></p>
+          <p><a class="pill" href="https://github.com/YOUR-GITHUB" target="_blank" rel="noreferrer">GitHub</a></p>
+          <p><a class="pill" href="https://instagram.com/YOUR-HANDLE" target="_blank" rel="noreferrer">Instagram</a></p>
+        </div></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="row">
+        <span>© <span id="year"></span> Javier Hernandez Vantuyl</span>
+        <span class="muted">Built with HTML & CSS • Free hosting‑ready</span>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function submitContact(e){
+      e.preventDefault();
+      const f = new FormData(e.target);
+      const name = encodeURIComponent(f.get('name'));
+      const email = encodeURIComponent(f.get('email'));
+      const msg = encodeURIComponent(f.get('message'));
+      window.location.href = `mailto:you@example.com?subject=Website%20inquiry%20from%20${name}&body=${msg}%0A%0Afrom:%20${email}`;
+    }
+  </script>
+
+  <!-- Basic structured data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Javier Hernandez Vantuyl",
+    "jobTitle": "Cybersecurity & Atlassian Specialist",
+    "url": "https://your-site.example",
+    "sameAs": [
+      "https://www.linkedin.com/in/YOUR-LINKEDIN",
+      "https://github.com/YOUR-GITHUB"
+    ]
+  }
+  </script>
+</body>
+</html>
