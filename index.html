@@ -53,6 +53,18 @@
 
     .grid { display:grid; gap:16px; }
     .grid.cards { grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); }
+    /* --- Expandable project cards --- */
+    .project { cursor: pointer; }
+    .project-header { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .project-title { font-weight:700; }
+    .chevron { transition: transform .2s ease; opacity:.6; }
+    .project[aria-expanded="true"] .chevron { transform: rotate(180deg); opacity:1; }
+    .project-body { overflow: hidden; max-height: 0; transition: max-height .25s ease; }
+    .project[aria-expanded="true"] .project-body { max-height: 240px; }
+    .project-body p { margin: 10px 0; }
+    
+    /* --- Fluent contact button --- */
+    .contact .btn.primary { width: 100%; justify-content: center; box-shadow: inset 0 -2px 0 rgba(0,0,0,.15), 0 8px 24px rgba(34,197,94,0.25); }
 
     .card { background: linear-gradient(180deg, rgba(15,23,42,0.9), rgba(15,23,42,0.75)); border:1px solid #1f2937; border-radius: var(--radius); box-shadow: var(--shadow); }
     .card .body { padding: 18px; }
@@ -178,23 +190,49 @@
 
     <section id="projects" aria-labelledby="proj-head">
       <h2 id="proj-head">Selected Projects</h2>
-      <div class="grid cards">
-        <article class="card"><div class="body">
-          <strong>Access‑as‑a‑Switch (People Team)</strong>
+      <div class="grid cards" id="projects-grid">
+    <!-- Project 1 -->
+    <article class="card project" aria-expanded="false">
+      <div class="body">
+        <div class="project-header" role="button" aria-controls="p1-body" tabindex="0">
+          <span class="project-title">Access‑as‑a‑Switch (People Team)</span>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="project-body" id="p1-body">
           <p class="muted">Pre‑provisioned Entra groups as a single switch for access. On/offboarding automated via ConductorOne.</p>
-          <a class="pill" href="#">Case study</a>
-        </div></article>
-        <article class="card"><div class="body">
-          <strong>Milo — Accountability Bot</strong>
-          <p class="muted">Tracks streaks, posts daily check‑ins, supports light admin verification to drive habit consistency.</p>
-          <a class="pill" href="#">Read more</a>
-        </div></article>
-        <article class="card"><div class="body">
-          <strong>PR Ephemeral Environments</strong>
-          <p class="muted">Spin up AWS Lambda + API GW stacks on pull requests; tear them down on close. Free‑tier friendly infra.</p>
-          <a class="pill" href="#">Repository</a>
-        </div></article>
+          <a class="pill" href="#" target="_blank" rel="noreferrer">Case study</a>
+        </div>
       </div>
+    </article>
+
+    <!-- Project 2 -->
+    <article class="card project" aria-expanded="false">
+      <div class="body">
+        <div class="project-header" role="button" aria-controls="p2-body" tabindex="0">
+          <span class="project-title">Milo — Accountability Bot</span>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="project-body" id="p2-body">
+          <p class="muted">Tracks streaks, posts daily check‑ins, supports light admin verification to drive habit consistency.</p>
+          <a class="pill" href="#" target="_blank" rel="noreferrer">Read more</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 3 -->
+    <article class="card project" aria-expanded="false">
+      <div class="body">
+        <div class="project-header" role="button" aria-controls="p3-body" tabindex="0">
+          <span class="project-title">PR Ephemeral Environments</span>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="project-body" id="p3-body">
+          <p class="muted">Spin up AWS Lambda + API GW stacks on pull requests; tear them down on close. Free‑tier friendly infra.</p>
+          <a class="pill" href="#" target="_blank" rel="noreferrer">Repository</a>
+        </div>
+      </div>
+    </article>
+  </div>
     </section>
 
     <section id="contact" class="contact" aria-labelledby="contact-head">
@@ -219,7 +257,7 @@
     <footer class="footer">
       <div class="row">
         <span>© <span id="year"></span> Javier Hernandez Vantuyl</span>
-        <span class="muted">Built with HTML & CSS • Free hosting‑ready</span>
+        <span class="muted">Built with HTML & CSS</span>
       </div>
     </footer>
   </main>
@@ -234,6 +272,21 @@
       const msg = encodeURIComponent(f.get('message'));
       window.location.href = `mailto:javierhernandezvantuyl@gmail.com?subject=Website%20inquiry%20from%20${name}&body=${msg}%0A%0Afrom:%20${email}`;
     }
+    // Expand/collapse project cards
+    const projectCards = document.querySelectorAll('.project');
+    projectCards.forEach(card => {
+      const header = card.querySelector('.project-header');
+      header.addEventListener('click', () => {
+        const expanded = card.getAttribute('aria-expanded') === 'true';
+        card.setAttribute('aria-expanded', String(!expanded));
+      });
+      header.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          header.click();
+        }
+      });
+    });
   </script>
 
   <!-- Basic structured data for SEO -->
