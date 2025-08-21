@@ -62,6 +62,14 @@
     .project-body { overflow: hidden; max-height: 0; transition: max-height .25s ease; }
     .project[aria-expanded="true"] .project-body { max-height: 240px; }
     .project-body p { margin: 10px 0; }
+
+    /* --- Accordion polish + nested Read more drawer --- */
+    .project { border: 1px solid #1f2937; }
+    .project[aria-expanded="true"] { border-color: #2a3a55; }
+    .project-body .more { overflow: hidden; max-height: 0; transition: max-height .25s ease; }
+    .project-body .more.open { max-height: 500px; }
+    .read-more { cursor: pointer; user-select: none; }
+    .read-more:hover { opacity: .9; }
     
     /* --- Fluent contact button --- */
     .contact .btn.primary { width: 100%; justify-content: center; box-shadow: inset 0 -2px 0 rgba(0,0,0,.15), 0 8px 24px rgba(34,197,94,0.25); }
@@ -200,7 +208,14 @@
         </div>
         <div class="project-body" id="p1-body">
           <p class="muted">Pre‑provisioned Entra groups as a single switch for access. On/offboarding automated via ConductorOne.</p>
-          <a class="pill" href="#" target="_blank" rel="noreferrer">Case study</a>
+          <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p1-more">Read more</button>
+          <div class="more" id="p1-more">
+            <ul class="muted bullets">
+              <li>Modeled least‑privilege groups in Entra; mapped to apps via SCIM/SCIM‑like connectors.</li>
+              <li>Provisioning flows kicked off via ConductorOne; approvals logged for audits.</li>
+              <li>Result: faster onboarding and cleaner access reviews.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </article>
@@ -214,7 +229,14 @@
         </div>
         <div class="project-body" id="p2-body">
           <p class="muted">Tracks streaks, posts daily check‑ins, supports light admin verification to drive habit consistency.</p>
-          <a class="pill" href="#" target="_blank" rel="noreferrer">Read more</a>
+          <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p2-more">Read more</button>
+          <div class="more" id="p2-more">
+            <ul class="muted bullets">
+              <li>Bot commands for <em>check‑in</em>, <em>streak</em>, and <em>reset</em>; daily cron via host.</li>
+              <li>PostgreSQL for users and streak counters; simple moderation features.</li>
+              <li>Stretch goal: add OAuth + web dashboard for stats.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </article>
@@ -228,7 +250,14 @@
         </div>
         <div class="project-body" id="p3-body">
           <p class="muted">Spin up AWS Lambda + API GW stacks on pull requests; tear them down on close. Free‑tier friendly infra.</p>
-          <a class="pill" href="#" target="_blank" rel="noreferrer">Repository</a>
+          <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p3-more">Read more</button>
+          <div class="more" id="p3-more">
+            <ul class="muted bullets">
+              <li>Terraform module creates per‑PR environments; namespaced resources.</li>
+              <li>GitHub Actions wires plan/apply on open; destroy on close/merge.</li>
+              <li>Cuts review friction; zero long‑running cost when idle.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </article>
@@ -272,20 +301,38 @@
       const msg = encodeURIComponent(f.get('message'));
       window.location.href = `mailto:javierhernandezvantuyl@gmail.com?subject=Website%20inquiry%20from%20${name}&body=${msg}%0A%0Afrom:%20${email}`;
     }
-    // Expand/collapse project cards
-    const projectCards = document.querySelectorAll('.project');
-    projectCards.forEach(card => {
+    // True accordion for project cards (one open at a time)
+    const cards = Array.from(document.querySelectorAll('.project'));
+    cards.forEach((card) => {
       const header = card.querySelector('.project-header');
       header.addEventListener('click', () => {
-        const expanded = card.getAttribute('aria-expanded') === 'true';
-        card.setAttribute('aria-expanded', String(!expanded));
+        const willOpen = card.getAttribute('aria-expanded') !== 'true';
+        cards.forEach(c => c.setAttribute('aria-expanded', 'false'));
+        if (willOpen) card.setAttribute('aria-expanded', 'true');
       });
       header.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          header.click();
-        }
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); header.click(); }
       });
+
+      // Nested Read more drawer inside each card
+      const btn = card.querySelector('.read-more');
+      const more = btn && document.getElementById(btn.getAttribute('aria-controls'));
+      if (btn && more) {
+        const toggleMore = () => {
+          const open = btn.getAttribute('aria-expanded') === 'true';
+          if (open) {
+            btn.setAttribute('aria-expanded', 'false');
+            more.classList.remove('open');
+          } else {
+            btn.setAttribute('aria-expanded', 'true');
+            more.classList.add('open');
+            // ensure parent card is open so content is visible
+            card.setAttribute('aria-expanded', 'true');
+          }
+        };
+        btn.addEventListener('click', toggleMore);
+        btn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleMore(); }});
+      }
     });
   </script>
 
