@@ -90,12 +90,20 @@
     /* --- Experience timeline --- */
     .timeline { position: relative; margin-top: 8px; }
     .timeline::before {
-      content: ""; position: absolute; left: 14px; top: 0; bottom: 0; width: 2px;
+      content: ""; position: absolute; left: 28px; top: 0; bottom: 0; width: 2px;
       background: linear-gradient(to bottom, #38bdf8, #22c55e); opacity: .45;
     }
-    .timeline-item { position: relative; display: grid; grid-template-columns: 32px 1fr; gap: 12px; padding: 12px 0 6px; }
+    .timeline-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 56px 1fr;  /* more breathing room next to the spine */
+      gap: 12px;
+      padding: 12px 0 6px;
+    }
     .timeline-dot {
-      position: relative; margin-top: 4px; height: 12px; width: 12px; border-radius: 999px;
+      position: relative;
+      margin-top: 18px;                /* aligns dot with card title */
+      height: 10px; width: 10px; border-radius: 999px;
       background: linear-gradient(135deg, #0ea5e9, #22c55e);
       box-shadow: 0 0 0 3px rgba(56,189,248,0.15), 0 8px 20px rgba(34,197,94,0.25);
     }
@@ -144,7 +152,7 @@
 
   <main id="home" class="container">
     <section class="hero" aria-labelledby="intro">
-      <span class="chip" aria-label="status">ISO 27001 • Remote‑first</span>
+      <span class="chip" aria-label="status">Remote-first</span>
       <h1 id="intro" class="title">Javier Hernandez Vantuyl</h1>
       <p class="lead">Cybersecurity & Atlassian specialist. I turn messy access paths into clean, auditable flows and ship lightweight infra that just works.</p>
       <div class="btns">
