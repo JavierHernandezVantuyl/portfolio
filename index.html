@@ -56,6 +56,34 @@
 
     .card { background: linear-gradient(180deg, rgba(15,23,42,0.9), rgba(15,23,42,0.75)); border:1px solid #1f2937; border-radius: var(--radius); box-shadow: var(--shadow); }
     .card .body { padding: 18px; }
+    /* --- UI polish: card hover --- */
+    .card {
+      background: linear-gradient(180deg, rgba(15,23,42,0.92), rgba(15,23,42,0.78));
+      border: 1px solid #1e293b;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(0,0,0,0.45); border-color: #2a3a55; }
+    ul.bullets { padding-left: 18px; margin: 8px 0 0; line-height: 1.55; }
+    ul.bullets li { margin: 6px 0; }
+
+    /* --- Experience timeline --- */
+    .timeline { position: relative; margin-top: 8px; }
+    .timeline::before {
+      content: ""; position: absolute; left: 14px; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(to bottom, #38bdf8, #22c55e); opacity: .45;
+    }
+    .timeline-item { position: relative; display: grid; grid-template-columns: 32px 1fr; gap: 12px; padding: 12px 0 6px; }
+    .timeline-dot {
+      position: relative; margin-top: 4px; height: 12px; width: 12px; border-radius: 999px;
+      background: linear-gradient(135deg, #0ea5e9, #22c55e);
+      box-shadow: 0 0 0 3px rgba(56,189,248,0.15), 0 8px 20px rgba(34,197,94,0.25);
+    }
+    .timeline-card { padding: 16px; border-radius: 14px; background: rgba(15,23,42,0.6); border: 1px solid #22314a; }
+    .timeline-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+    .timeline-title { font-weight: 700; }
+    .timeline-meta { font-size: 12px; color: var(--muted); white-space: nowrap; }
+
     .muted { color: var(--muted); }
     ul.clean { list-style: none; padding: 0; margin: 0; }
     ul.bullets { padding-left: 18px; }
@@ -114,29 +142,37 @@
 
     <section id="experience" aria-labelledby="exp-head">
       <h2 id="exp-head">Experience</h2>
-      <div class="grid cards">
-        <article class="card"><div class="body">
-          <div class="row">
-            <strong>IT Support Specialist (Former Cybersecurity Analyst Intern)</strong>
-            <span class="muted">Lead Bank • Jun. 2022 – Present</span>
+      <div class="timeline">
+        <!-- Lead Bank -->
+        <div class="timeline-item">
+          <div class="timeline-dot" aria-hidden="true"></div>
+          <div class="timeline-card">
+            <div class="timeline-head">
+              <div class="timeline-title">IT Support Specialist <span class="muted">(Former Cybersecurity Analyst Intern)</span></div>
+              <div class="timeline-meta">Lead Bank • Jun. 2022 – Present</div>
+            </div>
+            <ul class="muted bullets">
+              <li>Mitigated a 0-day SSL/TLS vulnerability affecting 200+ devices by deploying targeted PowerShell scripts and coordinating network-wide updates via Intune.</li>
+              <li>Designed and implemented a Jira-based IT ticketing system handling 1,500+ tickets annually, streamlining workflows and saving $3K/month through optimized planning and native Atlassian features.</li>
+              <li>Authored 50+ technical SOPs and end-user guides, cutting training time for new IT hires by over 50% and reducing support documentation requests.</li>
+              <li>Scaled infrastructure from 200 to 390+ users by managing accounts, security policies, and endpoint deployments across hybrid environments, ensuring secure, seamless access for a growing workforce.</li>
+            </ul>
           </div>
-          <ul class="muted bullets">
-            <li>Mitigated a 0-day SSL/TLS vulnerability affecting 200+ devices by deploying targeted PowerShell scripts and coordinating network-wide updates via Intune.</li>
-            <li>Designed and implemented a Jira-based IT ticketing system handling 1,500+ tickets annually, streamlining workflows and saving $3K/month through optimized planning and native Atlassian features.</li>
-            <li>Authored 50+ technical SOPs and end-user guides, cutting training time for new IT hires by over 50% and reducing support documentation requests.</li>
-            <li>Scaled infrastructure from 200 to 390+ users by managing accounts, security policies, and endpoint deployments across hybrid environments, ensuring secure, seamless access for a growing workforce.</li>
-          </ul>
-        </div></article>
+        </div>
 
-        <article class="card"><div class="body">
-          <div class="row">
-            <strong>Delivery Crew Lead</strong>
-            <span class="muted">Lee’s Summit Slide Rentals • May 2015 – Aug. 2023</span>
+        <!-- Lee’s Summit Slide Rentals -->
+        <div class="timeline-item">
+          <div class="timeline-dot" aria-hidden="true"></div>
+          <div class="timeline-card">
+            <div class="timeline-head">
+              <div class="timeline-title">Delivery Crew Lead</div>
+              <div class="timeline-meta">Lee’s Summit Slide Rentals • May 2015 – Aug. 2023</div>
+            </div>
+            <ul class="muted bullets">
+              <li>Led a crew of 5 in coordinating weekly inflatable deliveries for 15+ events, ensuring smooth setup logistics through teamwork, communication, and customer-focused problem-solving.</li>
+            </ul>
           </div>
-          <ul class="muted bullets">
-            <li>Led a crew of 5 in coordinating weekly inflatable deliveries for 15+ events, ensuring smooth setup logistics through teamwork, communication, and customer-focused problem-solving.</li>
-          </ul>
-        </div></article>
+        </div>
       </div>
     </section>
 
