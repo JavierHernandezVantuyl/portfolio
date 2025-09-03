@@ -54,20 +54,21 @@
     .grid { display:grid; gap:16px; }
     .grid.cards { grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); }
     /* --- Expandable project cards --- */
-    .project { cursor: pointer; }
+    .project .project-header { cursor: pointer; }
     .project-header { display:flex; align-items:center; justify-content:space-between; gap:12px; }
     .project-title { font-weight:700; }
     .chevron { transition: transform .2s ease; opacity:.6; }
     .project[aria-expanded="true"] .chevron { transform: rotate(180deg); opacity:1; }
-    .project-body { overflow: hidden; max-height: 0; transition: max-height .25s ease; }
-    .project[aria-expanded="true"] .project-body { max-height: 240px; }
+    /* Show project summaries by default; only the inner .more drawer collapses */
+    .project-body { padding-top: 6px; overflow: visible; max-height: none; }
+    /* summaries remain visible regardless of aria-expanded; chevron still rotates */
     .project-body p { margin: 10px 0; }
 
     /* --- Accordion polish + nested Read more drawer --- */
     .project { border: 1px solid #1f2937; }
     .project[aria-expanded="true"] { border-color: #2a3a55; }
     .project-body .more { overflow: hidden; max-height: 0; transition: max-height .25s ease; }
-    .project-body .more.open { max-height: 500px; }
+    .project-body .more.open { max-height: 2000px; }
     .read-more { cursor: pointer; user-select: none; background:#0b1328; border:1px solid #2a3a55; color:#cbd5e1; }
     .read-more:hover { background:#111827; }
     
@@ -75,7 +76,7 @@
     .contact .btn.primary { width: 100%; justify-content: center; box-shadow: inset 0 -2px 0 rgba(0,0,0,.15), 0 8px 24px rgba(34,197,94,0.25); }
 
     .card { background: linear-gradient(180deg, rgba(15,23,42,0.9), rgba(15,23,42,0.75)); border:1px solid #1f2937; border-radius: var(--radius); box-shadow: var(--shadow); }
-    .card .body { padding: 18px; }
+    .card .body { padding: 18px; min-height: 220px; }
     /* --- UI polish: card hover --- */
     .card {
       background: linear-gradient(180deg, rgba(15,23,42,0.92), rgba(15,23,42,0.78));
@@ -230,17 +231,21 @@
     <article class="card project" aria-expanded="false">
       <div class="body">
         <div class="project-header" role="button" aria-controls="p2-body" tabindex="0">
-          <span class="project-title">Milo — Accountability Bot</span>
+          <span class="project-title">Milo - Accountability Bot</span>
           <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="project-body" id="p2-body">
-          <p class="muted">Tracks streaks, posts daily check‑ins, supports light admin verification to drive habit consistency.</p>
+          <p class="muted">Discord accountability bot that turns goals into daily streaks with lightweight verification and social pressure. Built to reduce drop‑off by making consistency visible and rewarding.</p>
           <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p2-more">Read more</button>
           <div class="more" id="p2-more">
             <ul class="muted bullets">
-              <li>Bot commands for <em>check‑in</em>, <em>streak</em>, and <em>reset</em>; daily cron via host.</li>
-              <li>PostgreSQL for users and streak counters; simple moderation features.</li>
-              <li>Stretch goal: add OAuth + web dashboard for stats.</li>
+              <li><strong>Commands:</strong> <em>/checkin</em>, <em>/streak</em>, <em>/leaderboard</em>, <em>/help</em>; optional photo proof attachments for higher‑stakes habits.</li>
+              <li><strong>Streak engine:</strong> one check‑in per day with cooldowns; prevents back‑dating; supports a one‑time “freeze” per 30 days for travel/illness.</li>
+              <li><strong>Reminders:</strong> configurable DM + channel pings with quiet hours to avoid late‑night spam.</li>
+              <li><strong>Light admin:</strong> verify/deny queue, manual reset, and goal management for small groups.</li>
+              <li><strong>Data model:</strong> PostgreSQL tables for users, goals, checkins, and verifications; simple ORM queries and audit timestamps.</li>
+              <li><strong>Ops:</strong> docker‑compose for local dev; environment‑based config; health probe endpoint and basic logging.</li>
+              <li><em>Next:</em> OAuth + web dashboard for richer stats and streak graphs.</li>
             </ul>
           </div>
         </div>
@@ -255,13 +260,45 @@
           <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="project-body" id="p3-body">
-          <p class="muted">Spin up AWS Lambda + API GW stacks on pull requests; tear them down on close. Free‑tier friendly infra.</p>
+          <p class="muted">Create a fully isolated preview stack for every pull request, then destroy it automatically on merge/close. Speeds reviews while keeping infra costs near zero when idle.</p>
           <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p3-more">Read more</button>
           <div class="more" id="p3-more">
             <ul class="muted bullets">
-              <li>Terraform module creates per‑PR environments; namespaced resources.</li>
-              <li>GitHub Actions wires plan/apply on open; destroy on close/merge.</li>
-              <li>Cuts review friction; zero long‑running cost when idle.</li>
+              <li><strong>Workflow:</strong> on <code>pull_request</code> open/sync 👉 Terraform <em>plan/apply</em>; bot comments the preview URL & logs. On close/merge 👉 <em>destroy</em>.</li>
+              <li><strong>Infra:</strong> Terraform module names resources with PR number and tags; deploys Lambda + API Gateway + CloudWatch Logs (swap service module as needed).</li>
+              <li><strong>Security:</strong> GitHub Actions ➜ AWS via short‑lived OIDC; least‑privilege IAM; no long‑lived secrets in repo.</li>
+              <li><strong>Cost control:</strong> nightly sweeper/TTL guard for abandoned environments; consistent <code>cost-center</code> and <code>env</code> tags for reporting.</li>
+              <li><strong>Quality gates:</strong> smoke tests hit the preview endpoint; status check blocks merge on failure.</li>
+              <li><strong>Dev ergonomics:</strong> <code>.env.example</code>, make targets, and scripted teardown for local testing.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 4 -->
+    <article class="card project" aria-expanded="false">
+      <div class="body">
+        <div class="project-header" role="button" aria-controls="p4-body" tabindex="0">
+          <span class="project-title">Scout - Job Match Analyzer (Prototype)</span>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="project-body" id="p4-body">
+          <p class="muted">Prototype that ingests job postings (e.g., Lever) and your résumé, extracts keywords, and scores each listing by fit. Ranks opportunities and flags likely matches with posting age and remote filters.</p>
+          <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p4-more">Read more</button>
+          <div class="more" id="p4-more">
+            <ul class="muted bullets">
+              <li><strong>Sources:</strong> Lever today; adapter pattern prepared to add Greenhouse/Workday next.</li>
+              <li><strong>Parsing:</strong> fetches and normalizes to a common schema: title, company, location, type, description, <code>posted_at</code>, and URL.</li>
+              <li><strong>Résumé analysis:</strong> extracts skills/keywords from PDF/DOCX or pasted text, de‑duplicates, and stems basic variants.</li>
+              <li><strong>Scoring:</strong> weighted keyword overlap (must‑have vs nice‑to‑have), title‑match bonus, penalty for missing required certs; outputs 0–100 plus <em>Likely</em>/<em>Maybe</em>/<em>Unlikely</em>.</li>
+              <li><strong>Freshness:</strong> time‑decay so newer postings rank higher; shows posting age in days.</li>
+              <li><strong>Filters (WIP):</strong> remote/hybrid/onsite, salary presence, and visa‑mention detection (improving edge cases).</li>
+              <li><strong>UX:</strong> sortable table with detail drawer and quick link to the original posting.</li>
+              <li><strong>Export:</strong> CSV of top matches with direct links and scores.</li>
+              <li><strong>Safety/Ethics:</strong> read‑only analyzer—no auto‑apply, no scraping credentials; intended for personal research.</li>
             </ul>
           </div>
         </div>
