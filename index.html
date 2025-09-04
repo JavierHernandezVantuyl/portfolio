@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Javier Hernandez Vantuyl — Portfolio</title>
+  <title>Javier Hernandez Vantuyl - Portfolio</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="favicon.svg" />
-  <meta name="description" content="Cybersecurity & Atlassian specialist. I build tidy, secure systems and lightweight automations." />
-  <meta property="og:title" content="Javier Hernandez Vantuyl — Portfolio" />
-  <meta property="og:description" content="Cybersecurity & Atlassian specialist. I build tidy, secure systems and lightweight automations." />
+  <meta name="description" content="Cybersecurity & Cloud Infrastructure engineer. I build tidy, secure systems and lightweight automations." />
+  <meta property="og:title" content="Javier Hernandez Vantuyl - Portfolio" />
+  <meta property="og:description" content="Cybersecurity & Cloud Infrastructure engineer. I build tidy, secure systems and lightweight automations." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#0f172a" />
   <style>
@@ -43,6 +43,10 @@
     .chip { display:inline-flex; gap:8px; align-items:center; font-size:12px; color: var(--muted); border:1px solid #1f2937; padding:6px 10px; border-radius:999px; }
     .title { font-size: clamp(28px, 4vw, 56px); font-weight: 800; margin: 12px 0 8px; }
     .lead { color: var(--muted); font-size: clamp(14px, 2vw, 18px); max-width: 700px; }
+    /* Professional tone tweaks */
+    .lead { line-height: 1.6; letter-spacing: 0.1px; }
+    #about .card .body { line-height: 1.6; }
+    #about .bullets { margin-top: 8px; }
     .btns { display:flex; flex-wrap:wrap; gap:12px; margin-top: 18px; }
     .btn { display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius: 12px; border:1px solid #1f2937; background:#0b1328; }
     .btn:hover { border-color:#334155; }
@@ -155,7 +159,7 @@
     <section class="hero" aria-labelledby="intro">
       <span class="chip" aria-label="status">Remote-first</span>
       <h1 id="intro" class="title">Javier Hernandez Vantuyl</h1>
-      <p class="lead">Cybersecurity & Atlassian specialist. I turn messy access paths into clean, auditable flows and ship lightweight infra that just works.</p>
+      <p class="lead">Cybersecurity & cloud infrastructure engineer focused on IAM, access control, GRC, and secure automation. I design clean, auditable workflows and pragmatic infrastructure.</p>
       <div class="btns">
         <a class="btn primary" href="https://drive.google.com/uc?export=download&id=1EFR-3sXj7iHmQdAEJcNLdCgdvaW6OTNz" target="_blank" rel="noreferrer">Download résumé</a>
         <a class="btn" href="mailto:javierhernandezvantuyl@gmail.com">Email me</a>
@@ -168,19 +172,25 @@
       <h2 id="about-head">About</h2>
       <div class="split">
         <div class="card"><div class="body">
-          <p class="muted">I enjoy building tidy, secure systems, automating access, and keeping processes simple. Based in the U.S.; open to remote‑first teams worldwide.</p>
+          <p class="muted">I build secure, well‑documented systems and automate access with clear controls. My focus is pragmatic security: controls that withstand audits and are easy for teams to adopt.</p>
+          <ul class="bullets muted">
+            <li>Access control & IAM automation (Entra ID, SSO, least‑privilege)</li>
+            <li>GRC support - ISO 27001 / SOC 2 readiness & evidence hygiene</li>
+            <li>Atlassian administration & IT operations enablement</li>
+          </ul>
         </div></div>
         <div class="card"><div class="body">
           <div class="row" style="justify-content:flex-start"><span class="muted">Email</span><a class="pill soft" href="mailto:javierhernandezvantuyl@gmail.com">javierhernandezvantuyl@gmail.com</a></div>
-          <div class="row" style="margin-top:8px; justify-content:flex-start"><span class="muted">Location</span><span class="pill soft">USA (CST)</span></div>
+          <div class="row" style="margin-top:8px; justify-content:flex-start"><span class="muted">Location</span><span class="pill soft">United States (CST)</span></div>
           <div class="row" style="margin-top:8px; align-items:flex-start">
             <span class="muted label-tight">Open to</span>
             <div class="chips">
               <span class="pill soft">Cybersecurity</span>
+              <span class="pill soft">Cloud Infra</span>
+              <span class="pill soft">IAM</span>
               <span class="pill soft">GRC</span>
-              <span class="pill soft">IT Ops</span>
+              <span class="pill soft">Platform Eng</span>
               <span class="pill soft">Atlassian Admin</span>
-              <span class="pill soft">Sysadmin</span>
             </div>
           </div>
         </div></div>
@@ -298,7 +308,7 @@
               <li><strong>Filters (WIP):</strong> remote/hybrid/onsite, salary presence, and visa‑mention detection (improving edge cases).</li>
               <li><strong>UX:</strong> sortable table with detail drawer and quick link to the original posting.</li>
               <li><strong>Export:</strong> CSV of top matches with direct links and scores.</li>
-              <li><strong>Safety/Ethics:</strong> read‑only analyzer—no auto‑apply, no scraping credentials; intended for personal research.</li>
+              <li><strong>Safety/Ethics:</strong> read‑only analyzer-no auto‑apply, no scraping credentials; intended for personal research.</li>
             </ul>
           </div>
         </div>
@@ -384,7 +394,7 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Javier Hernandez Vantuyl",
-    "jobTitle": "Cybersecurity & Atlassian Specialist",
+    "jobTitle": "Cybersecurity & Cloud Infrastructure Engineer",
     "url": "https://your-site.example",
     "sameAs": [
       "https://www.linkedin.com/in/javier-h-5574a0233",
