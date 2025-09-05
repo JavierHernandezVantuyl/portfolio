@@ -61,8 +61,6 @@
     .project .project-header { cursor: pointer; }
     .project-header { display:flex; align-items:center; justify-content:space-between; gap:12px; }
     .project-title { font-weight:700; }
-    .chevron { transition: transform .2s ease; opacity:.6; }
-    .project[aria-expanded="true"] .chevron { transform: rotate(180deg); opacity:1; }
     /* Show project summaries by default; only the inner .more drawer collapses */
     .project-body { padding-top: 6px; overflow: visible; max-height: none; }
     /* summaries remain visible regardless of aria-expanded; chevron still rotates */
@@ -242,7 +240,6 @@
       <div class="body">
         <div class="project-header" role="button" aria-controls="p2-body" tabindex="0">
           <span class="project-title">Milo - Accountability Bot</span>
-          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="project-body" id="p2-body">
           <p class="muted">Discord accountability bot that turns goals into daily streaks with lightweight verification and social pressure. Built to reduce drop‑off by making consistency visible and rewarding.</p>
@@ -267,7 +264,6 @@
       <div class="body">
         <div class="project-header" role="button" aria-controls="p3-body" tabindex="0">
           <span class="project-title">PR Ephemeral Environments</span>
-          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="project-body" id="p3-body">
           <p class="muted">Create a fully isolated preview stack for every pull request, then destroy it automatically on merge/close. Speeds reviews while keeping infra costs near zero when idle.</p>
@@ -291,9 +287,6 @@
       <div class="body">
         <div class="project-header" role="button" aria-controls="p4-body" tabindex="0">
           <span class="project-title">Scout - Job Match Analyzer (Prototype)</span>
-          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
         </div>
         <div class="project-body" id="p4-body">
           <p class="muted">Prototype that ingests job postings (e.g., Lever) and your résumé, extracts keywords, and scores each listing by fit. Ranks opportunities and flags likely matches with posting age and remote filters.</p>
@@ -309,6 +302,28 @@
               <li><strong>UX:</strong> sortable table with detail drawer and quick link to the original posting.</li>
               <li><strong>Export:</strong> CSV of top matches with direct links and scores.</li>
               <li><strong>Safety/Ethics:</strong> read‑only analyzer-no auto‑apply, no scraping credentials; intended for personal research.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 5 -->
+    <article class="card project" aria-expanded="false">
+      <div class="body">
+        <div class="project-header" role="button" aria-controls="p5-body" tabindex="0">
+          <span class="project-title">ADINT Research Project</span>
+        </div>
+        <div class="project-body" id="p5-body">
+          <p class="muted">Consent‑based study on <em>Advertising Intelligence (ADINT)</em> - using ad platforms as measurement channels to demonstrate real‑world privacy exposure while remaining compliant with platform policies.</p>
+          <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p5-more">Read more</button>
+          <div class="more" id="p5-more">
+            <ul class="muted bullets">
+              <li><strong>Signals:</strong> leveraged click IDs (gclid/fbclid), UTMs, and first‑party logs to link events across sessions and platforms.</li>
+              <li><strong>Experiments:</strong> micro‑budget re‑identification loop, geofenced presence check, and interest delivery validation.</li>
+              <li><strong>Instrumentation:</strong> landing page + first‑party logging, anonymized UTMs, minimal pixels, and lightweight dashboards.</li>
+              <li><strong>Results:</strong> reliably re‑reached consenting participants within 24–72h; observed delivery shifts inside tight geos; inferred interest buckets via controlled ad‑set delivery.</li>
+              <li><strong>Ethics & compliance:</strong> written consent, no sensitive categories, no deanonymization, minimal spend, and strict alignment with platform ToS.</li>
             </ul>
           </div>
         </div>
