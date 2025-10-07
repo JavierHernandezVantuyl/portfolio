@@ -74,10 +74,7 @@
     .read-more { cursor: pointer; user-select: none; background:#0b1328; border:1px solid #2a3a55; color:#cbd5e1; }
     .read-more:hover { background:#111827; }
     
-    /* Collapsible résumé embed */
-    .collapsible-embed { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
-    .collapsible-embed.open { max-height: 2000px; }
-    #resume .toggle-row { display:flex; align-items:center; gap:10px; margin: 4px 0 12px; }
+    /* (résumé section removed) */
     
     /* --- Fluent contact button --- */
     .contact .btn.primary { width: 100%; justify-content: center; box-shadow: inset 0 -2px 0 rgba(0,0,0,.15), 0 8px 24px rgba(34,197,94,0.25); }
@@ -146,6 +143,74 @@
   </style>
 </head>
 <body>
+  <!-- Terminal-style intro overlay -->
+  <div id="gate" aria-hidden="false" style="position:fixed;inset:0;z-index:9999;background:radial-gradient(800px 400px at 50% -10%, rgba(34,197,94,0.08), transparent), var(--bg);display:grid;place-items:center;">
+    <div role="dialog" aria-label="Intro" style="width:min(720px,92vw);border:1px solid #1f2937;background:#0b1328;box-shadow:var(--shadow);border-radius:12px;padding:18px 16px 16px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;color:#94a3b8;font-size:12px;">
+        <span style="width:10px;height:10px;border-radius:999px;background:#ef4444;"></span>
+        <span style="width:10px;height:10px;border-radius:999px;background:#f59e0b;"></span>
+        <span style="width:10px;height:10px;border-radius:999px;background:#22c55e;"></span>
+        <span style="margin-left:8px;">portfolio — pseudo terminal</span>
+      </div>
+      <div id="gate-terminal" style="min-height:140px;color:#d1fae5;line-height:1.6;">
+        <div><span style="color:#22c55e;">guest@portfolio</span><span style="color:#94a3b8;">:~$</span> <span id="gate-input"></span><span id="gate-cursor" aria-hidden="true" style="display:inline-block;width:9px;height:1.1em;background:#22c55e;vertical-align:text-bottom;margin-left:1px;animation:blink 1s steps(1) infinite;"></span></div>
+        <div id="gate-output" style="margin-top:8px;color:#a7f3d0;"></div>
+      </div>
+    </div>
+  </div>
+  <style>
+    @keyframes blink { 50% { opacity: 0; } }
+    body.gate-lock { overflow: hidden; }
+    #gate.fade { opacity: 0; transition: opacity .5s ease; pointer-events: none; }
+  </style>
+  <script>
+    (function(){
+      const gate = document.getElementById('gate');
+      if (!gate) return;
+      document.body.classList.add('gate-lock');
+      const inputEl = document.getElementById('gate-input');
+      const outputEl = document.getElementById('gate-output');
+
+      function finish(){
+        // small flourish before fade
+        setTimeout(() => {
+          gate.classList.add('fade');
+          document.body.classList.remove('gate-lock');
+          setTimeout(() => { gate.setAttribute('aria-hidden','true'); gate.remove(); }, 520);
+        }, 400);
+      }
+
+      // Auto-type "whoami" then reveal name and fade
+      const cmd = 'whoami';
+      let i = 0;
+      function typeNext(){
+        if (i < cmd.length) {
+          inputEl.textContent = cmd.slice(0, i+1);
+          i++;
+          setTimeout(typeNext, 90);
+        } else {
+          setTimeout(() => {
+            outputEl.textContent = 'Javier Hernandez Vantuyl';
+            setTimeout(() => finish(), 900);
+          }, 250);
+        }
+      }
+      // Allow quick skip via click or Escape
+      gate.addEventListener('click', () => finish());
+      window.addEventListener('keydown', (e) => { if (e.key === 'Escape') finish(); });
+      // Skip entirely if deep-linking to a section
+      if (location.hash && location.hash !== '#home') {
+        setTimeout(() => finish(), 200);
+      } else {
+        setTimeout(typeNext, 450);
+      }
+
+      // If user clicks a nav link while the gate is up, finish gracefully
+      window.addEventListener('hashchange', () => {
+        if (document.body.classList.contains('gate-lock')) finish();
+      });
+    })();
+  </script>
   <header class="nav">
     <div class="container nav-inner">
       <a href="#home" style="font-weight:700;color:#fff">Javier Hernandez Vantuyl</a>
@@ -153,7 +218,6 @@
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
-        <a href="#resume">Résumé</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -166,12 +230,11 @@
       <p class="lead">Cybersecurity & cloud infrastructure engineer focused on IAM, access control, GRC, and secure automation. I design clean, auditable workflows and pragmatic infrastructure.</p>
       <div class="btns">
         <a class="btn primary" href="https://docs.google.com/document/d/1EFR-3sXj7iHmQdAEJcNLdCgdvaW6OTNz/export?format=pdf" target="_blank" rel="noopener">Download résumé (PDF)</a>
-        <a class="btn" href="#resume">View résumé</a>
         <a class="btn" href="mailto:javierhernandezvantuyl@gmail.com">Email me</a>
         <a class="btn" href="https://www.linkedin.com/in/javier-h-5574a0233" target="_blank" rel="noreferrer">LinkedIn</a>
         <a class="btn" href="https://github.com/JavierHernandezVantuyl" target="_blank" rel="noreferrer">GitHub</a>
       </div>
-    </section>
+  </section>
 
     <section id="about" aria-labelledby="about-head">
       <h2 id="about-head">About</h2>
@@ -339,29 +402,7 @@
   </div>
     </section>
 
-    <section id="resume" aria-labelledby="resume-head">
-      <h2 id="resume-head">Résumé</h2>
-      <div class="toggle-row">
-        <button type="button" class="pill read-more" aria-expanded="false" aria-controls="resume-embed">Show résumé</button>
-      </div>
-      <div id="resume-embed" class="collapsible-embed" aria-hidden="true">
-      <div class="card">
-        <div class="body" style="height:80vh;">
-          <iframe
-            src="https://docs.google.com/document/d/1EFR-3sXj7iHmQdAEJcNLdCgdvaW6OTNz/preview"
-            title="Résumé preview"
-            style="width:100%; height:100%; border:0;"
-            loading="lazy"
-            referrerpolicy="no-referrer">
-          </iframe>
-        </div>
-      </div>
-      <div class="btns">
-        <a class="btn" href="https://docs.google.com/document/d/1EFR-3sXj7iHmQdAEJcNLdCgdvaW6OTNz/export?format=pdf" target="_blank" rel="noopener">Download PDF</a>
-        <a class="btn" href="https://docs.google.com/document/d/1EFR-3sXj7iHmQdAEJcNLdCgdvaW6OTNz/edit" target="_blank" rel="noopener">Open in Google Docs</a>
-      </div>
-      </div>
-    </section>
+    
 
     <section id="contact" class="contact" aria-labelledby="contact-head">
       <h2 id="contact-head">Contact</h2>
@@ -434,29 +475,7 @@
     });
   </script>
 
-  // Collapsible résumé
-  (function(){
-    const resumeSection = document.getElementById('resume');
-    if (!resumeSection) return;
-    const toggleBtn = resumeSection.querySelector('button[aria-controls="resume-embed"]');
-    const panel = document.getElementById('resume-embed');
-    if (!toggleBtn || !panel) return;
-
-    function setOpen(isOpen){
-      toggleBtn.setAttribute('aria-expanded', String(isOpen));
-      panel.classList.toggle('open', isOpen);
-      panel.setAttribute('aria-hidden', String(!isOpen));
-      toggleBtn.textContent = isOpen ? 'Hide résumé' : 'Show résumé';
-    }
-
-    toggleBtn.addEventListener('click', () => setOpen(toggleBtn.getAttribute('aria-expanded') !== 'true'));
-
-    function maybeOpenFromHash(){
-      if (location.hash === '#resume') setOpen(true);
-    }
-    maybeOpenFromHash();
-    window.addEventListener('hashchange', maybeOpenFromHash);
-  })();
+  
 
   <!-- Basic structured data for SEO -->
   <script type="application/ld+json">
