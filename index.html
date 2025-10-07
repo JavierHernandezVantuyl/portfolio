@@ -74,6 +74,11 @@
     .read-more { cursor: pointer; user-select: none; background:#0b1328; border:1px solid #2a3a55; color:#cbd5e1; }
     .read-more:hover { background:#111827; }
     
+    /* Collapsible résumé embed */
+    .collapsible-embed { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+    .collapsible-embed.open { max-height: 2000px; }
+    #resume .toggle-row { display:flex; align-items:center; gap:10px; margin: 4px 0 12px; }
+    
     /* --- Fluent contact button --- */
     .contact .btn.primary { width: 100%; justify-content: center; box-shadow: inset 0 -2px 0 rgba(0,0,0,.15), 0 8px 24px rgba(34,197,94,0.25); }
 
@@ -160,7 +165,7 @@
       <h1 id="intro" class="title">Javier Hernandez Vantuyl</h1>
       <p class="lead">Cybersecurity & cloud infrastructure engineer focused on IAM, access control, GRC, and secure automation. I design clean, auditable workflows and pragmatic infrastructure.</p>
       <div class="btns">
-        <a class="btn primary" href="https://docs.google.com/document/d/1EFR-3sXj7iHmQdAEjCNLdCgdvaW6OTNz/export?format=pdf" target="_blank" rel="noopener">Download résumé (PDF)</a>
+        <a class="btn primary" href="https://docs.google.com/document/d/1EFR-3sXj7iHmQdAEJcNLdCgdvaW6OTNz/export?format=pdf" target="_blank" rel="noopener">Download résumé (PDF)</a>
         <a class="btn" href="#resume">View résumé</a>
         <a class="btn" href="mailto:javierhernandezvantuyl@gmail.com">Email me</a>
         <a class="btn" href="https://www.linkedin.com/in/javier-h-5574a0233" target="_blank" rel="noreferrer">LinkedIn</a>
@@ -336,6 +341,10 @@
 
     <section id="resume" aria-labelledby="resume-head">
       <h2 id="resume-head">Résumé</h2>
+      <div class="toggle-row">
+        <button type="button" class="pill read-more" aria-expanded="false" aria-controls="resume-embed">Show résumé</button>
+      </div>
+      <div id="resume-embed" class="collapsible-embed" aria-hidden="true">
       <div class="card">
         <div class="body" style="height:80vh;">
           <iframe
@@ -350,6 +359,7 @@
       <div class="btns">
         <a class="btn" href="https://docs.google.com/document/d/1EFR-3sXj7iHmQdAEJcNLdCgdvaW6OTNz/export?format=pdf" target="_blank" rel="noopener">Download PDF</a>
         <a class="btn" href="https://docs.google.com/document/d/1EFR-3sXj7iHmQdAEJcNLdCgdvaW6OTNz/edit" target="_blank" rel="noopener">Open in Google Docs</a>
+      </div>
       </div>
     </section>
 
@@ -423,6 +433,30 @@
       }
     });
   </script>
+
+  // Collapsible résumé
+  (function(){
+    const resumeSection = document.getElementById('resume');
+    if (!resumeSection) return;
+    const toggleBtn = resumeSection.querySelector('button[aria-controls="resume-embed"]');
+    const panel = document.getElementById('resume-embed');
+    if (!toggleBtn || !panel) return;
+
+    function setOpen(isOpen){
+      toggleBtn.setAttribute('aria-expanded', String(isOpen));
+      panel.classList.toggle('open', isOpen);
+      panel.setAttribute('aria-hidden', String(!isOpen));
+      toggleBtn.textContent = isOpen ? 'Hide résumé' : 'Show résumé';
+    }
+
+    toggleBtn.addEventListener('click', () => setOpen(toggleBtn.getAttribute('aria-expanded') !== 'true'));
+
+    function maybeOpenFromHash(){
+      if (location.hash === '#resume') setOpen(true);
+    }
+    maybeOpenFromHash();
+    window.addEventListener('hashchange', maybeOpenFromHash);
+  })();
 
   <!-- Basic structured data for SEO -->
   <script type="application/ld+json">
