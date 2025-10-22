@@ -13,82 +13,121 @@
   <meta name="theme-color" content="#0f172a" />
   <style>
     :root {
-      --bg: #0b1020;          /* deep slate */
-      --panel: #0f172a;       /* slate-900 */
-      --muted: #94a3b8;       /* slate-400 */
-      --text: #e5e7eb;        /* gray-200 */
-      --brand: #38bdf8;       /* sky-400 */
-      --accent: #22c55e;      /* green-500 */
-      --ring: #475569;        /* slate-600 */
-      --radius: 16px;
-      --shadow: 0 20px 50px rgba(0,0,0,0.4);
+      --bg: linear-gradient(180deg, #0d1024 0%, #0a0c1a 100%);          /* deep navy → ink gradient */
+      --panel: #111214;       /* deep graphite */
+      --muted: #a1a1aa;       /* zinc-400 */
+      --text: #e9e9ec;        /* near-white */
+      --accent: #9b87f5;      /* iris */
+      --accent-2: #ef9f76;    /* apricot */
+      --ring: #3f3f46;        /* zinc-600 */
+      --radius: 14px;
+      --shadow: 0 22px 48px rgba(0,0,0,0.45);
+      /* Dynamic glare controls (updated on scroll) */
+      --glare-o: 0.05;
+      --glare-y: -10%;
+      --flow-opacity: 0.06;
     }
     * { box-sizing: border-box; }
     html, body { height: 100%; }
     body {
       margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
-      color: var(--text); background: radial-gradient(1200px 600px at 50% -10%, rgba(56,189,248,0.08), transparent), var(--bg);
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 50% var(--glare-y, -10%), rgba(155,135,245,var(--glare-o, 0.04)), transparent), var(--bg);
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     }
     a { color: inherit; text-decoration: none; }
-    .container { max-width: 1000px; margin: 0 auto; padding: 24px; }
+    .container { max-width: 1040px; margin: 0 auto; padding: 28px; }
     .nav {
       position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px);
-      background: rgba(11,16,32,0.6); border-bottom: 1px solid #1f2937;
+      background: rgba(10,10,11,0.6); border-bottom: 1px solid #202226;
     }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-    .nav a { padding: 8px 12px; border-radius: 10px; font-size: 14px; color: var(--muted); }
-    .nav a:hover { background: #111827; color: #fff; }
+    .nav a { padding: 10px 12px; border-radius: 8px; font-size: 14px; color: var(--muted); transition: color .15s ease, background .15s ease; }
+    .nav a:hover { background: #15161b; color: #f4f4f5; }
 
-    .hero { padding: 64px 0 32px; }
-    .chip { display:inline-flex; gap:8px; align-items:center; font-size:12px; color: var(--muted); border:1px solid #1f2937; padding:6px 10px; border-radius:999px; }
-    .title { font-size: clamp(28px, 4vw, 56px); font-weight: 800; margin: 12px 0 8px; }
-    .lead { color: var(--muted); font-size: clamp(14px, 2vw, 18px); max-width: 700px; }
+    .hero { padding: 56px 0 24px; }
+    .chip { display:inline-flex; gap:8px; align-items:center; font-size:12px; color: var(--muted); border:1px solid #202226; padding:6px 10px; border-radius:999px; }
+    .title { font-size: clamp(32px, 4vw, 56px); font-weight: 800; margin: 12px 0 10px; letter-spacing: -0.02em; }
+    .lead { color: var(--muted); font-size: clamp(15px, 2vw, 18px); max-width: 720px; }
     /* Professional tone tweaks */
     .lead { line-height: 1.6; letter-spacing: 0.1px; }
     #about .card .body { line-height: 1.6; }
     #about .bullets { margin-top: 8px; }
     .btns { display:flex; flex-wrap:wrap; gap:12px; margin-top: 18px; }
-    .btn { display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius: 12px; border:1px solid #1f2937; background:#0b1328; }
-    .btn:hover { border-color:#334155; }
-    .btn.primary { background: linear-gradient(135deg, #0ea5e9, #22c55e); color:#0b1020; font-weight:700; }
+    .btn {
+      display:inline-flex; align-items:center; gap:8px;
+      height:40px; padding:0 14px;
+      border-radius:12px;
+      border:1px solid rgba(148,163,184,.22);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      color:#e9e9ec;
+      backdrop-filter: blur(8px) saturate(130%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 8px 20px rgba(0,0,0,.25);
+      transition: border-color .15s ease, background .15s ease, transform .08s ease, box-shadow .15s ease;
+    }
+    .btn:hover {
+      border-color: rgba(148,163,184,.35);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 12px 26px rgba(0,0,0,.35);
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn.primary {
+      border-color: rgba(155,135,245,.55);
+      background: linear-gradient(180deg, rgba(155,135,245,.18), rgba(155,135,245,.12));
+      color:#f6f5ff; font-weight:600;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.10), 0 10px 28px rgba(155,135,245,.28);
+    }
+    .btn.primary:hover {
+      background: linear-gradient(180deg, rgba(169,153,255,.22), rgba(169,153,255,.16));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 14px 34px rgba(155,135,245,.36);
+    }
+    .hero-panel {
+      padding: 28px;
+      border-radius: 16px;
+      border: 1px solid rgba(148,163,184,.20);
+      background: linear-gradient(180deg, rgba(15,23,42,.68), rgba(15,23,42,.45));
+      backdrop-filter: blur(10px) saturate(140%);
+      box-shadow: 0 20px 48px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .hero-panel .title { margin-top: 6px; }
+    .hero-panel .btns { margin-top: 14px; }
 
-    section { scroll-margin-top: 96px; padding: 28px 0 8px; }
-    h2 { font-size: 22px; margin: 0 0 14px; }
+    section { scroll-margin-top: 96px; padding: 36px 0 10px; }
+    h2 { font-size: 24px; margin: 0 0 16px; letter-spacing: -0.01em; }
+    h2 + .muted { margin-top: -6px; }
 
     .grid { display:grid; gap:16px; }
     .grid.cards { grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); }
-    /* --- Expandable project cards --- */
-    .project .project-header { cursor: pointer; }
-    .project-header { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    /* --- Project headers (summary only) --- */
+    .project .project-header { cursor: default; }
+    .project-header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding: 6px 6px; border-radius: 8px; transition: background .15s ease, border-color .15s ease; }
+    .project-header:hover { background: rgba(148,163,184,0.06); }
     .project-title { font-weight:700; }
     /* Show project summaries by default; only the inner .more drawer collapses */
     .project-body { padding-top: 6px; overflow: visible; max-height: none; }
-    /* summaries remain visible regardless of aria-expanded; chevron still rotates */
+    /* summaries remain visible by default; details open via Read more */
     .project-body p { margin: 10px 0; }
 
     /* --- Accordion polish + nested Read more drawer --- */
-    .project { border: 1px solid #1f2937; }
-    .project[aria-expanded="true"] { border-color: #2a3a55; }
+    .project { border: 1px solid #202226; }
+    .project[aria-expanded="true"] { border-color: #2a2f3a; }
     .project-body .more { overflow: hidden; max-height: 0; transition: max-height .25s ease; }
     .project-body .more.open { max-height: 2000px; }
-    .read-more { cursor: pointer; user-select: none; background:#0b1328; border:1px solid #2a3a55; color:#cbd5e1; }
-    .read-more:hover { background:#111827; }
-    
-    /* (résumé section removed) */
-    
+    .read-more { cursor: pointer; user-select: none; background:#111217; border:1px solid #2a2f3a; color:#e5e7eb; }
+    .read-more:hover { background:#161821; }
     /* --- Fluent contact button --- */
-    .contact .btn.primary { width: 100%; justify-content: center; box-shadow: inset 0 -2px 0 rgba(0,0,0,.15), 0 8px 24px rgba(34,197,94,0.25); }
+    .contact .btn.primary { width: 100%; justify-content: center; box-shadow: inset 0 -2px 0 rgba(0,0,0,.15), 0 8px 24px rgba(155,135,245,0.25); }
 
-    .card { background: linear-gradient(180deg, rgba(15,23,42,0.9), rgba(15,23,42,0.75)); border:1px solid #1f2937; border-radius: var(--radius); box-shadow: var(--shadow); }
-    .card .body { padding: 18px; min-height: 220px; }
+    .card { background: linear-gradient(180deg, rgba(17,18,20,0.92), rgba(17,18,20,0.78)); border:1px solid #202226; border-radius: var(--radius); box-shadow: var(--shadow); }
+    .card .body { padding: 18px; min-height: 180px; }
     /* --- UI polish: card hover --- */
     .card {
       background: linear-gradient(180deg, rgba(15,23,42,0.92), rgba(15,23,42,0.78));
       border: 1px solid #1e293b;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.35);
       transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
     }
-    .card:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(0,0,0,0.45); border-color: #2a3a55; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(0,0,0,0.45); border-color: #2f3340; }
     ul.bullets { padding-left: 18px; margin: 8px 0 0; line-height: 1.55; }
     ul.bullets li { margin: 6px 0; }
 
@@ -96,7 +135,7 @@
     .timeline { position: relative; margin-top: 8px; }
     .timeline::before {
       content: ""; position: absolute; left: 28px; top: 0; bottom: 0; width: 2px;
-      background: linear-gradient(to bottom, #38bdf8, #22c55e); opacity: .45;
+      background: linear-gradient(to bottom, #9b87f5, #ef9f76); opacity: .35;
     }
     .timeline-item {
       position: relative;
@@ -109,10 +148,10 @@
       position: relative;
       margin-top: 18px;                /* aligns dot with card title */
       height: 10px; width: 10px; border-radius: 999px;
-      background: linear-gradient(135deg, #0ea5e9, #22c55e);
-      box-shadow: 0 0 0 3px rgba(56,189,248,0.15), 0 8px 20px rgba(34,197,94,0.25);
+      background: linear-gradient(135deg, #9b87f5, #ef9f76);
+      box-shadow: 0 0 0 3px rgba(155,135,245,0.18), 0 8px 20px rgba(239,159,118,0.22);
     }
-    .timeline-card { padding: 16px; border-radius: 14px; background: rgba(15,23,42,0.6); border: 1px solid #22314a; }
+    .timeline-card { padding: 16px; border-radius: 12px; background: rgba(17,18,20,0.6); border: 1px solid #2a2d34; }
     .timeline-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
     .timeline-title { font-weight: 700; }
     .timeline-meta { font-size: 12px; color: var(--muted); white-space: nowrap; }
@@ -122,38 +161,111 @@
     ul.bullets { padding-left: 18px; }
 
     .row { display:flex; gap:12px; align-items:center; justify-content: space-between; }
-    .pill { display:inline-block; padding:6px 10px; border:1px solid #233047; border-radius:999px; font-size:12px; color: #cbd5e1; }
+    .pill { display:inline-block; padding:6px 10px; border:1px solid #2b2f37; border-radius:999px; font-size:12px; color: #e3e3e7; background: rgba(161,161,170,0.06); }
     .chips { display:flex; flex-wrap:wrap; gap:8px; }
-    .pill.soft { background: rgba(148,163,184,0.08); border-color:#22314a; }
+    .pill.soft { background: rgba(161,161,170,0.08); border-color:#2a2d34; }
 
     /* spacing for the "Open to" label so it doesn't crowd chips */
     .label-tight { padding-top:6px; margin-right:8px; white-space:nowrap; }
 
     /* hover polish for Experience timeline cards to match other cards */
     .timeline-card { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
-    .timeline-card:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(0,0,0,0.45); border-color: #2a3a55; }
+    .timeline-card:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(0,0,0,0.45); border-color: #2f3340; }
 
     .contact form { display:grid; gap:10px; }
-    input, textarea { width:100%; padding:12px 14px; border-radius:12px; border:1px solid #1f2937; background:#0b1328; color:var(--text); outline:none; }
-    input:focus, textarea:focus { border-color:#334155; box-shadow: 0 0 0 4px rgba(51,65,85,0.35); }
+    input, textarea { width:100%; padding:12px 14px; border-radius:12px; border:1px solid #202226; background:#111217; color:var(--text); outline:none; }
+    input:focus, textarea:focus { border-color:#2b2f37; box-shadow: 0 0 0 4px rgba(155,135,245,0.25); }
     textarea { min-height: 120px; resize: vertical; }
-    .footer { border-top: 1px solid #1f2937; margin-top: 28px; padding: 22px 0; color: var(--muted); font-size: 14px; }
+    .footer { border-top: 1px solid #202226; margin-top: 28px; padding: 22px 0; color: var(--muted); font-size: 14px; }
+
+    /* Sleek hero title gradient */
+    .title.gradient {
+      background: linear-gradient(90deg, #d9d7e9, #9b87f5);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      filter: drop-shadow(0 6px 18px rgba(155,135,245,0.18));
+    }
+    /* Subtle glass effect on cards */
+    .card { backdrop-filter: saturate(130%) blur(6px); }
+    /* Chevron removed to avoid confusing non-functional toggle on headers */
+    .project-header::after { content: none; }
+    /* Nav polish when scrolled */
+    .nav { box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+    .nav.scrolled { background: rgba(10,10,11,0.75); border-bottom-color: #2a2d34; }
+    /* Accessibility focus treatment */
+    :focus-visible { outline: 2px solid #9b87f5; outline-offset: 2px; border-radius: 8px; }
+    ::placeholder { color: #64748b; }
+
+    /* Subtle enhancement to nav glass */
+    .nav { backdrop-filter: saturate(140%) blur(10px); }
+
+    /* Enterprise: animated glass-flow background */
+    .glass-flow {
+      position: fixed; inset: -20vh -20vw; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(28vw 28vh at 12% 10%, rgba(155,135,245,0.12), transparent 60%),
+        radial-gradient(36vw 36vh at 88% 18%, rgba(239,159,118,0.10), transparent 62%),
+        radial-gradient(22vw 22vh at 24% 82%, rgba(155,135,245,0.08), transparent 62%);
+      filter: blur(40px) saturate(120%);
+      opacity: var(--flow-opacity, .06);
+      animation: flow 42s ease-in-out infinite alternate;
+    }
+    @keyframes flow {
+      0%   { transform: translate3d(0,0,0) scale(1); }
+      50%  { transform: translate3d(-1.5%, 0.8%, 0) scale(1.02); }
+      100% { transform: translate3d(1.2%, -0.6%, 0) scale(1); }
+    }
+
+    /* Enterprise: subtle scroll-reveal */
+    .reveal { opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .glass-flow { animation: none; opacity: .04; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* Hyper-modern grid overlay */
+    .grid-overlay {
+      position: fixed; inset: 0; pointer-events: none; z-index: 1;
+      background-image:
+        linear-gradient(to right, rgba(161,161,170,0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(161,161,170,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+      background-position: var(--grid-x, 0px) var(--grid-y, 0px);
+      mix-blend-mode: soft-light;
+      opacity: .25;
+    }
+
+    /* Enhanced glass cards: gradient border */
+    .card {
+      border: 1px solid transparent;
+      background:
+        linear-gradient(180deg, rgba(17,18,20,0.94), rgba(17,18,20,0.78)) padding-box,
+        linear-gradient(135deg, rgba(155,135,245,0.24), rgba(239,159,118,0.18)) border-box;
+      will-change: transform;
+    }
+    .card:hover { border-color: transparent; }
 
     @media (min-width: 800px){ .split { display:grid; grid-template-columns: 2fr 1fr; gap:16px; } }
   </style>
 </head>
-<body>
+  <body>
+  <!-- Subtle animated glass-flow background (enterprise, unobtrusive) -->
+  <div class="glass-flow" aria-hidden="true"></div>
+  <!-- Grid overlay for hyper-modern aesthetic -->
+  <div class="grid-overlay" aria-hidden="true"></div>
   <!-- Terminal-style intro overlay -->
-  <div id="gate" aria-hidden="false" style="position:fixed;inset:0;z-index:9999;background:radial-gradient(800px 400px at 50% -10%, rgba(34,197,94,0.08), transparent), var(--bg);display:grid;place-items:center;">
-    <div role="dialog" aria-label="Intro" style="width:min(720px,92vw);border:1px solid #1f2937;background:#0b1328;box-shadow:var(--shadow);border-radius:12px;padding:18px 16px 16px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;">
+  <div id="gate" aria-hidden="false" style="position:fixed;inset:0;z-index:9999;background:radial-gradient(800px 400px at 50% -10%, rgba(155,135,245,0.08), transparent), var(--bg);display:grid;place-items:center;">
+    <div role="dialog" aria-label="Intro" style="width:min(720px,92vw);border:1px solid #202226;background:#111217;box-shadow:var(--shadow);border-radius:12px;padding:18px 16px 16px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;color:#94a3b8;font-size:12px;">
         <span style="width:10px;height:10px;border-radius:999px;background:#ef4444;"></span>
         <span style="width:10px;height:10px;border-radius:999px;background:#f59e0b;"></span>
-        <span style="width:10px;height:10px;border-radius:999px;background:#22c55e;"></span>
+        <span style="width:10px;height:10px;border-radius:999px;background:#9b87f5;"></span>
         <span style="margin-left:8px;">portfolio — pseudo terminal</span>
       </div>
       <div id="gate-terminal" style="min-height:140px;color:#d1fae5;line-height:1.6;">
-        <div><span style="color:#22c55e;">guest@portfolio</span><span style="color:#94a3b8;">:~$</span> <span id="gate-input"></span><span id="gate-cursor" aria-hidden="true" style="display:inline-block;width:9px;height:1.1em;background:#22c55e;vertical-align:text-bottom;margin-left:1px;animation:blink 1s steps(1) infinite;"></span></div>
+        <div><span style="color:#9b87f5;">guest@portfolio</span><span style="color:#a1a1aa;">:~$</span> <span id="gate-input"></span><span id="gate-cursor" aria-hidden="true" style="display:inline-block;width:9px;height:1.1em;background:#9b87f5;vertical-align:text-bottom;margin-left:1px;animation:blink 1s steps(1) infinite;"></span></div>
         <div id="gate-output" style="margin-top:8px;color:#a7f3d0;"></div>
       </div>
     </div>
@@ -213,52 +325,57 @@
   </script>
   <header class="nav">
     <div class="container nav-inner">
-      <a href="#home" style="font-weight:700;color:#fff">Javier Hernandez Vantuyl</a>
+      <a href="index.html" style="font-weight:700;color:#fff">Javier Hernandez Vantuyl</a>
       <nav class="row" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <a href="about.html">About</a>
+        <a href="experience.html">Experience</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
   <main id="home" class="container">
     <section class="hero" aria-labelledby="intro">
-      <span class="chip" aria-label="status">Remote-first</span>
-      <h1 id="intro" class="title">Javier Hernandez Vantuyl</h1>
-      <p class="lead">Cybersecurity & cloud infrastructure engineer focused on IAM, access control, GRC, and secure automation. I design clean, auditable workflows and pragmatic infrastructure.</p>
-      <div class="btns">
-        <a class="btn primary" href="https://docs.google.com/document/d/1EFR-3sXj7iHmQdAEJcNLdCgdvaW6OTNz/export?format=pdf" target="_blank" rel="noopener">Download résumé (PDF)</a>
-        <a class="btn" href="mailto:javierhernandezvantuyl@gmail.com">Email me</a>
-        <a class="btn" href="https://www.linkedin.com/in/javier-h-5574a0233" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a class="btn" href="https://github.com/JavierHernandezVantuyl" target="_blank" rel="noreferrer">GitHub</a>
+      <div class="hero-panel">
+        <span class="chip" aria-label="status">Remote-first</span>
+        <h1 id="intro" class="title gradient">Javier Hernandez Vantuyl</h1>
+        <p class="lead">Cybersecurity & cloud infrastructure engineer focused on IAM, access control, GRC, and secure automation. I design clean, auditable workflows and pragmatic infrastructure.</p>
+        <div class="btns">
+          <a class="btn primary" href="https://docs.google.com/document/d/1EFR-3sXj7iHmQdAEJcNLdCgdvaW6OTNz/export?format=pdf" target="_blank" rel="noopener">Download résumé (PDF)</a>
+          <a class="btn" href="mailto:javierhernandezvantuyl@gmail.com">Email me</a>
+          <a class="btn" href="https://www.linkedin.com/in/javier-h-5574a0233" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn" href="https://github.com/JavierHernandezVantuyl" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
       </div>
-  </section>
+    </section>
 
     <section id="about" aria-labelledby="about-head">
       <h2 id="about-head">About</h2>
       <div class="split">
         <div class="card"><div class="body">
-          <p class="muted">I build secure, well‑documented systems and automate access with clear controls. My focus is pragmatic security: controls that withstand audits and are easy for teams to adopt.</p>
+          <p class="muted">I secure and streamline cloud and IT operations with a focus on IAM, endpoint/MDM, and evidence‑ready controls. I prefer pragmatic automation, clear documentation, and systems teams actually use.</p>
           <ul class="bullets muted">
-            <li>Access control & IAM automation (Entra ID, SSO, least‑privilege)</li>
-            <li>GRC support - ISO 27001 / SOC 2 readiness & evidence hygiene</li>
-            <li>Atlassian administration & IT operations enablement</li>
+            <li>IAM & access control: Entra ID/SSO, least‑privilege, access reviews</li>
+            <li>Endpoint/MDM: Intune baselines, zero‑touch enrollment, compliance, Conditional Access</li>
+            <li>Cloud support: AWS fundamentals, Terraform modules, incident triage and cost guardrails</li>
+            <li>Automation & tooling: PowerShell, Bash, GitHub Actions, small CLIs</li>
+            <li>GRC & operations: ISO 27001/SOC 2 readiness with clean evidence and SOPs</li>
           </ul>
         </div></div>
         <div class="card"><div class="body">
           <div class="row" style="justify-content:flex-start"><span class="muted">Email</span><a class="pill soft" href="mailto:javierhernandezvantuyl@gmail.com">javierhernandezvantuyl@gmail.com</a></div>
-          <div class="row" style="margin-top:8px; justify-content:flex-start"><span class="muted">Location</span><span class="pill soft">United States (CST)</span></div>
+          <div class="row" style="margin-top:8px; justify-content:flex-start"><span class="muted">Location</span><span class="pill soft">United States (CDT)</span></div>
+          <div class="row" style="margin-top:8px; justify-content:flex-start">
+            <span class="muted">Time zones</span>
+            <span class="pill soft" style="margin-left:12px;">US Central (CDT) · Central European (CET/CEST)</span>
+          </div>
           <div class="row" style="margin-top:8px; align-items:flex-start">
             <span class="muted label-tight">Open to</span>
             <div class="chips">
-              <span class="pill soft">Cybersecurity</span>
-              <span class="pill soft">Cloud Infra</span>
-              <span class="pill soft">IAM</span>
-              <span class="pill soft">GRC</span>
-              <span class="pill soft">Platform Eng</span>
-              <span class="pill soft">Atlassian Admin</span>
+              <span class="pill soft">Security Ops</span>
+              <span class="pill soft">Cloud Support Engineer</span>
+              <span class="pill soft">MDM Endpoint Management Engineer</span>
             </div>
           </div>
         </div></div>
@@ -268,13 +385,12 @@
     <section id="experience" aria-labelledby="exp-head">
       <h2 id="exp-head">Experience</h2>
       <div class="timeline">
-        <!-- Lead Bank -->
         <div class="timeline-item">
           <div class="timeline-dot" aria-hidden="true"></div>
           <div class="timeline-card">
             <div class="timeline-head">
-              <div class="timeline-title">IT Support Specialist <span class="muted">(Former Cybersecurity Analyst Intern)</span></div>
-              <div class="timeline-meta">Lead Bank • Jun. 2022 – Present</div>
+              <div class="timeline-title">IT Support Specialist <span class="muted">(Former Cybersecurity Analyst)</span></div>
+              <div class="timeline-meta">Confidential US Bank (FDIC-insured, regulated) • Jun. 2022 – Present</div>
             </div>
             <ul class="muted bullets">
               <li>Mitigated a 0-day SSL/TLS vulnerability affecting 200+ devices by deploying targeted PowerShell scripts and coordinating network-wide updates via Intune.</li>
@@ -284,8 +400,6 @@
             </ul>
           </div>
         </div>
-
-        <!-- Lee’s Summit Slide Rentals -->
         <div class="timeline-item">
           <div class="timeline-dot" aria-hidden="true"></div>
           <div class="timeline-card">
@@ -304,105 +418,111 @@
     <section id="projects" aria-labelledby="proj-head">
       <h2 id="proj-head">Selected Projects</h2>
       <div class="grid cards" id="projects-grid">
-
-    <!-- Project 2 -->
-    <article class="card project" aria-expanded="false">
-      <div class="body">
-        <div class="project-header" role="button" aria-controls="p2-body" tabindex="0">
-          <span class="project-title">Milo - Accountability Bot</span>
-        </div>
-        <div class="project-body" id="p2-body">
-          <p class="muted">Discord accountability bot that turns goals into daily streaks with lightweight verification and social pressure. Built to reduce drop‑off by making consistency visible and rewarding.</p>
-          <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p2-more">Read more</button>
-          <div class="more" id="p2-more">
-            <ul class="muted bullets">
-              <li><strong>Commands:</strong> <em>/checkin</em>, <em>/streak</em>, <em>/leaderboard</em>, <em>/help</em>; optional photo proof attachments for higher‑stakes habits.</li>
-              <li><strong>Streak engine:</strong> one check‑in per day with cooldowns; prevents back‑dating; supports a one‑time “freeze” per 30 days for travel/illness.</li>
-              <li><strong>Reminders:</strong> configurable DM + channel pings with quiet hours to avoid late‑night spam.</li>
-              <li><strong>Light admin:</strong> verify/deny queue, manual reset, and goal management for small groups.</li>
-              <li><strong>Data model:</strong> PostgreSQL tables for users, goals, checkins, and verifications; simple ORM queries and audit timestamps.</li>
-              <li><strong>Ops:</strong> docker‑compose for local dev; environment‑based config; health probe endpoint and basic logging.</li>
-              <li><em>Next:</em> OAuth + web dashboard for richer stats and streak graphs.</li>
-            </ul>
+        <!-- 1) AWS Incident Co-Pilot -->
+        <article class="card project" aria-expanded="false">
+          <div class="body">
+            <div class="project-header">
+              <span class="project-title">AWS Incident Co‑Pilot — Cloud Support Toolkit</span>
+            </div>
+            <div class="project-body" id="p1-body">
+              <p class="muted">Built a mock‑first CLI that triages common AWS incidents and auto‑packages an evidence bundle with a Slack‑ready summary.</p>
+              <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p1-more">Read more</button>
+              <div class="more" id="p1-more">
+                <ul class="muted bullets">
+                  <li>Shipped deterministic scenarios: 5xx spikes, throttling, <code>AccessDenied</code>, DLQ backlog.</li>
+                  <li>Produced an evidence bundle (<code>timeline.md</code>, lightweight charts, manifest, raw snippets) zipped for hand‑off.</li>
+                  <li>Included adapters: mock (default), optional LocalStack & AWS read‑only; documented a 5–7 min walkthrough.</li>
+                  <li>Stack: Python, Typer, Rich, Matplotlib; JSON datasets; modular checks/adapters.</li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </article>
+        </article>
 
-    <!-- Project 3 -->
-    <article class="card project" aria-expanded="false">
-      <div class="body">
-        <div class="project-header" role="button" aria-controls="p3-body" tabindex="0">
-          <span class="project-title">PR Ephemeral Environments</span>
-        </div>
-        <div class="project-body" id="p3-body">
-          <p class="muted">Create a fully isolated preview stack for every pull request, then destroy it automatically on merge/close. Speeds reviews while keeping infra costs near zero when idle.</p>
-          <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p3-more">Read more</button>
-          <div class="more" id="p3-more">
-            <ul class="muted bullets">
-              <li><strong>Workflow:</strong> on <code>pull_request</code> open/sync 👉 Terraform <em>plan/apply</em>; bot comments the preview URL & logs. On close/merge 👉 <em>destroy</em>.</li>
-              <li><strong>Infra:</strong> Terraform module names resources with PR number and tags; deploys Lambda + API Gateway + CloudWatch Logs (swap service module as needed).</li>
-              <li><strong>Security:</strong> GitHub Actions ➜ AWS via short‑lived OIDC; least‑privilege IAM; no long‑lived secrets in repo.</li>
-              <li><strong>Cost control:</strong> nightly sweeper/TTL guard for abandoned environments; consistent <code>cost-center</code> and <code>env</code> tags for reporting.</li>
-              <li><strong>Quality gates:</strong> smoke tests hit the preview endpoint; status check blocks merge on failure.</li>
-              <li><strong>Dev ergonomics:</strong> <code>.env.example</code>, make targets, and scripted teardown for local testing.</li>
-            </ul>
+        <!-- 2) Cloud Blueprint Exporter -->
+        <article class="card project" aria-expanded="false">
+          <div class="body">
+            <div class="project-header">
+              <span class="project-title">Cloud Blueprint Exporter — AWS → Terraform</span>
+            </div>
+            <div class="project-body" id="p2-body">
+              <p class="muted">Delivered a read‑only exporter that generates plan‑ready Terraform from an existing AWS account using opinionated modules and variables.</p>
+              <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p2-more">Read more</button>
+              <div class="more" id="p2-more">
+                <ul class="muted bullets">
+                  <li>Inventoried core services and emitted HCL modules, variables, and outputs suitable for <code>terraform plan</code>.</li>
+                  <li>Added safety rails: allow/deny lists, redaction, region filters, and a drift summary; enforced consistent tagging (<code>env</code>, <code>cost-center</code>).</li>
+                  <li>Implemented a CI demo: GitHub Actions → AWS via OIDC (short‑lived creds) with dry‑run vs. write; 5–7 min export + plan.</li>
+                  <li>Stack: Terraform, AWS SDK, JSON manifests; produced reproducible, reviewable outputs.</li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </article>
+        </article>
 
-    <!-- Project 4 -->
-    <article class="card project" aria-expanded="false">
-      <div class="body">
-        <div class="project-header" role="button" aria-controls="p4-body" tabindex="0">
-          <span class="project-title">Scout - Job Match Analyzer (Prototype)</span>
-        </div>
-        <div class="project-body" id="p4-body">
-          <p class="muted">Prototype that ingests job postings (e.g., Lever) and your résumé, extracts keywords, and scores each listing by fit. Ranks opportunities and flags likely matches with posting age and remote filters.</p>
-          <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p4-more">Read more</button>
-          <div class="more" id="p4-more">
-            <ul class="muted bullets">
-              <li><strong>Sources:</strong> Lever today; adapter pattern prepared to add Greenhouse/Workday next.</li>
-              <li><strong>Parsing:</strong> fetches and normalizes to a common schema: title, company, location, type, description, <code>posted_at</code>, and URL.</li>
-              <li><strong>Résumé analysis:</strong> extracts skills/keywords from PDF/DOCX or pasted text, de‑duplicates, and stems basic variants.</li>
-              <li><strong>Scoring:</strong> weighted keyword overlap (must‑have vs nice‑to‑have), title‑match bonus, penalty for missing required certs; outputs 0–100 plus <em>Likely</em>/<em>Maybe</em>/<em>Unlikely</em>.</li>
-              <li><strong>Freshness:</strong> time‑decay so newer postings rank higher; shows posting age in days.</li>
-              <li><strong>Filters (WIP):</strong> remote/hybrid/onsite, salary presence, and visa‑mention detection (improving edge cases).</li>
-              <li><strong>UX:</strong> sortable table with detail drawer and quick link to the original posting.</li>
-              <li><strong>Export:</strong> CSV of top matches with direct links and scores.</li>
-              <li><strong>Safety/Ethics:</strong> read‑only analyzer-no auto‑apply, no scraping credentials; intended for personal research.</li>
-            </ul>
+        <!-- 3) Intune Zero‑Touch Lab -->
+        <article class="card project" aria-expanded="false">
+          <div class="body">
+            <div class="project-header">
+              <span class="project-title">Intune Zero‑Touch Lab — Endpoint/MDM</span>
+            </div>
+            <div class="project-body" id="p3-body">
+              <p class="muted">Built a cost‑free lab that proves zero‑touch enrollment → baseline config → compliance → Conditional Access (Report‑only) → Proactive Remediations.</p>
+              <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p3-more">Read more</button>
+              <div class="more" id="p3-more">
+                <ul class="muted bullets">
+                  <li>Configured Autopilot (hardware‑hash import) with ESP; deployed one Win32 app (Notepad++ or triage script).</li>
+                  <li>Implemented two compliance policies (e.g., BitLocker/TPM & AV/OS version) feeding CA in Report‑only.</li>
+                  <li>Authored Proactive Remediations: disk cleanup, MDM agent health reset, cert renewal check.</li>
+                  <li>Ran on an M365 Dev/Trial tenant with Intune and a Windows 11 eval VM; $0 spend; CA remained non‑destructive.</li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </article>
+        </article>
 
-    <!-- Project 5 -->
-    <article class="card project" aria-expanded="false">
-      <div class="body">
-        <div class="project-header" role="button" aria-controls="p5-body" tabindex="0">
-          <span class="project-title">ADINT Research Project</span>
-        </div>
-        <div class="project-body" id="p5-body">
-          <p class="muted">Consent‑based study on <em>Advertising Intelligence (ADINT)</em> - using ad platforms as measurement channels to demonstrate real‑world privacy exposure while remaining compliant with platform policies.</p>
-          <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p5-more">Read more</button>
-          <div class="more" id="p5-more">
-            <ul class="muted bullets">
-              <li><strong>Signals:</strong> leveraged click IDs (gclid/fbclid), UTMs, and first‑party logs to link events across sessions and platforms.</li>
-              <li><strong>Experiments:</strong> micro‑budget re‑identification loop, geofenced presence check, and interest delivery validation.</li>
-              <li><strong>Instrumentation:</strong> landing page + first‑party logging, anonymized UTMs, minimal pixels, and lightweight dashboards.</li>
-              <li><strong>Results:</strong> reliably re‑reached consenting participants within 24–72h; observed delivery shifts inside tight geos; inferred interest buckets via controlled ad‑set delivery.</li>
-              <li><strong>Ethics & compliance:</strong> written consent, no sensitive categories, no deanonymization, minimal spend, and strict alignment with platform ToS.</li>
-            </ul>
+        <!-- 4) PR Ephemeral Environments (condensed) -->
+        <article class="card project" aria-expanded="false">
+          <div class="body">
+            <div class="project-header">
+              <span class="project-title">PR Ephemeral Environments</span>
+            </div>
+            <div class="project-body" id="p4-body">
+              <p class="muted">Implemented per‑PR preview stacks that auto‑destroy on merge/close, cutting idle cost near zero and accelerating reviews.</p>
+              <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p4-more">Read more</button>
+              <div class="more" id="p4-more">
+                <ul class="muted bullets">
+                  <li>Automated workflow: on <code>pull_request</code> open/sync → Terraform plan/apply; on merge/close → destroy.</li>
+                  <li>Hardened security: GitHub Actions → AWS via short‑lived OIDC; least‑privilege IAM; no long‑lived secrets.</li>
+                  <li>Added cost controls: nightly sweeper and TTL guard; consistent tagging for reporting.</li>
+                  <li>Enforced quality gates: smoke tests + required status checks.</li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </div>
+        </article>
+
+        <!-- 5) ADINT Research Project (condensed) -->
+        <article class="card project" aria-expanded="false">
+          <div class="body">
+            <div class="project-header">
+              <span class="project-title">ADINT Research Project</span>
+            </div>
+            <div class="project-body" id="p5-body">
+              <p class="muted">Completed a consent‑based study using ad platforms as measurement channels to demonstrate privacy exposure while remaining compliant.</p>
+              <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p5-more">Read more</button>
+              <div class="more" id="p5-more">
+                <ul class="muted bullets">
+                  <li>Captured signals: click IDs (gclid/fbclid), UTMs, and first‑party logs.</li>
+                  <li>Ran experiments: micro‑budget re‑reach, geofenced presence check, interest delivery validation.</li>
+                  <li>Maintained ethics: written consent, no sensitive categories, minimal spend, strict ToS alignment.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
-    </article>
-  </div>
     </section>
-
-    
 
     <section id="contact" class="contact" aria-labelledby="contact-head">
       <h2 id="contact-head">Contact</h2>
@@ -441,19 +561,9 @@
       const msg = encodeURIComponent(f.get('message'));
       window.location.href = `mailto:javierhernandezvantuyl@gmail.com?subject=Website%20inquiry%20from%20${name}&body=${msg}%0A%0Afrom:%20${email}`;
     }
-    // Expand/collapse project cards (multiple can be open)
+    // Read more drawers inside project cards (headers no longer toggle)
     const cards = Array.from(document.querySelectorAll('.project'));
     cards.forEach((card) => {
-      const header = card.querySelector('.project-header');
-      header.addEventListener('click', () => {
-        const expanded = card.getAttribute('aria-expanded') === 'true';
-        card.setAttribute('aria-expanded', String(!expanded));
-      });
-      header.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); header.click(); }
-      });
-
-      // Nested Read more drawer inside each card
       const btn = card.querySelector('.read-more');
       const more = btn && document.getElementById(btn.getAttribute('aria-controls'));
       if (btn && more) {
@@ -465,14 +575,94 @@
           } else {
             btn.setAttribute('aria-expanded', 'true');
             more.classList.add('open');
-            // ensure parent card is open so content is visible
-            card.setAttribute('aria-expanded', 'true');
           }
         };
         btn.addEventListener('click', toggleMore);
         btn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleMore(); }});
       }
     });
+    // Toggle nav scrolled state and dynamic background glare
+    const navEl = document.querySelector('header.nav');
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const setNavScrolled = () => { if (navEl) navEl.classList.toggle('scrolled', window.scrollY > 4); };
+
+    function updateGlare() {
+      if (prefersReduced) return; // keep static for reduced motion
+      const h = Math.max(window.innerHeight, 1);
+      const y = window.scrollY || window.pageYOffset || 0;
+      const t = Math.min(Math.max(y / (h * 1.2), 0), 1); // 0..1
+      const glareO = (0.04 + t * 0.06).toFixed(3);      // 0.04 → 0.10
+      const glareY = (-10 + t * 20).toFixed(1) + '%';   // -10% → +10%
+      const flowO  = (0.06 + t * 0.04).toFixed(3);      // 0.06 → 0.10
+      const gridX  = (-t * 20).toFixed(1) + 'px';       // gentle pan
+      const gridY  = (t * 40).toFixed(1) + 'px';
+      const root = document.documentElement;
+      root.style.setProperty('--glare-o', glareO);
+      root.style.setProperty('--glare-y', glareY);
+      root.style.setProperty('--flow-opacity', flowO);
+      root.style.setProperty('--grid-x', gridX);
+      root.style.setProperty('--grid-y', gridY);
+    }
+
+    const onScroll = () => {
+      setNavScrolled();
+      // rAF throttle for variable updates
+      if (!onScroll._ticking) {
+        onScroll._ticking = true;
+        requestAnimationFrame(() => { updateGlare(); onScroll._ticking = false; });
+      }
+    };
+    setNavScrolled();
+    updateGlare();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Subtle enterprise scroll-reveal
+    (function(){
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const targets = Array.from(document.querySelectorAll('.card, .timeline-item, .hero .title, .hero .lead'));
+      if (!targets.length) return;
+      if (prefersReduced || !('IntersectionObserver' in window)) {
+        targets.forEach(el => el.classList.add('in'));
+        return;
+      }
+      targets.forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = `${Math.min(i * 40, 240)}ms`;
+      });
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(({ isIntersecting, target }) => {
+          if (isIntersecting) {
+            target.classList.add('in');
+            io.unobserve(target);
+          }
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+      targets.forEach(el => io.observe(el));
+    })();
+
+    // Subtle tilt on hover for cards (hyper-modern micro-interaction)
+    (function(){
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) return;
+      const tiltCards = document.querySelectorAll('.card');
+      tiltCards.forEach((card) => {
+        let rafId = null;
+        const onMove = (e) => {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / Math.max(r.width, 1);
+          const y = (e.clientY - r.top) / Math.max(r.height, 1);
+          const rx = (0.5 - y) * 4;   // max 4deg tilt
+          const ry = (x - 0.5) * 4;
+          if (!rafId) rafId = requestAnimationFrame(() => {
+            card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+            rafId = null;
+          });
+        };
+        const onLeave = () => { card.style.transform = ''; };
+        card.addEventListener('mousemove', onMove);
+        card.addEventListener('mouseleave', onLeave);
+      });
+    })();
   </script>
 
   

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects — Javier Hernandez Vantuyl</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <meta name="description" content="Selected projects by Javier Hernandez Vantuyl." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div class="glass-flow" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" style="font-weight:700;color:#fff">Javier Hernandez Vantuyl</a>
+      <nav class="row" aria-label="Primary">
+        <a href="about.html">About</a>
+        <a href="experience.html">Experience</a>
+        <a href="projects.html" aria-current="page">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section aria-labelledby="proj-head">
+      <h1 id="proj-head" class="title gradient">Selected Projects</h1>
+      <div class="grid cards" id="projects-grid">
+        <!-- 1) AWS Incident Co-Pilot — Cloud Support Toolkit -->
+        <article class="card project" aria-expanded="false">
+          <div class="body">
+            <div class="project-header">
+              <span class="project-title">AWS Incident Co‑Pilot — Cloud Support Toolkit</span>
+            </div>
+            <div class="project-body" id="p1-body">
+              <p class="muted">Built a mock‑first CLI that triages common AWS incidents and auto‑packages an evidence bundle with a Slack‑ready summary.</p>
+              <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p1-more">Read more</button>
+              <div class="more" id="p1-more">
+                <ul class="muted bullets">
+                  <li>Shipped deterministic scenarios: 5xx spikes, throttling, <code>AccessDenied</code>, DLQ backlog.</li>
+                  <li>Produced an evidence bundle (<code>timeline.md</code>, lightweight charts, manifest, raw snippets) zipped for hand‑off.</li>
+                  <li>Included adapters: mock (default), optional LocalStack & AWS read‑only; documented a 5–7 min walkthrough.</li>
+                  <li>Stack: Python, Typer, Rich, Matplotlib; JSON datasets; modular checks/adapters.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2) Cloud Blueprint Exporter — AWS → Terraform -->
+        <article class="card project" aria-expanded="false">
+          <div class="body">
+            <div class="project-header">
+              <span class="project-title">Cloud Blueprint Exporter — AWS → Terraform</span>
+            </div>
+            <div class="project-body" id="p2-body">
+              <p class="muted">Delivered a read‑only exporter that generates plan‑ready Terraform from an existing AWS account using opinionated modules and variables.</p>
+              <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p2-more">Read more</button>
+              <div class="more" id="p2-more">
+                <ul class="muted bullets">
+                  <li>Inventoried core services and emitted HCL modules, variables, and outputs suitable for <code>terraform plan</code>.</li>
+                  <li>Added safety rails: allow/deny lists, redaction, region filters, and a drift summary; enforced consistent tagging (<code>env</code>, <code>cost-center</code>).</li>
+                  <li>Implemented a CI demo: GitHub Actions → AWS via OIDC (short‑lived creds) with dry‑run vs. write; 5–7 min export + plan.</li>
+                  <li>Stack: Terraform, AWS SDK, JSON manifests; produced reproducible, reviewable outputs.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3) Intune Zero‑Touch Lab — Endpoint/MDM -->
+        <article class="card project" aria-expanded="false">
+          <div class="body">
+            <div class="project-header">
+              <span class="project-title">Intune Zero‑Touch Lab — Endpoint/MDM</span>
+            </div>
+            <div class="project-body" id="p3-body">
+              <p class="muted">Built a cost‑free lab that proves zero‑touch enrollment → baseline config → compliance → Conditional Access (Report‑only) → Proactive Remediations.</p>
+              <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p3-more">Read more</button>
+              <div class="more" id="p3-more">
+                <ul class="muted bullets">
+                  <li>Configured Autopilot (hardware‑hash import) with ESP; deployed one Win32 app (Notepad++ or triage script).</li>
+                  <li>Implemented two compliance policies (e.g., BitLocker/TPM & AV/OS version) feeding CA in Report‑only.</li>
+                  <li>Authored Proactive Remediations: disk cleanup, MDM agent health reset, cert renewal check.</li>
+                  <li>Ran on an M365 Dev/Trial tenant with Intune and a Windows 11 eval VM; $0 spend; CA remained non‑destructive.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4) PR Ephemeral Environments (condensed) -->
+        <article class="card project" aria-expanded="false">
+          <div class="body">
+            <div class="project-header">
+              <span class="project-title">PR Ephemeral Environments</span>
+            </div>
+            <div class="project-body" id="p4-body">
+              <p class="muted">Implemented per‑PR preview stacks that auto‑destroy on merge/close, cutting idle cost near zero and accelerating reviews.</p>
+              <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p4-more">Read more</button>
+              <div class="more" id="p4-more">
+                <ul class="muted bullets">
+                  <li>Automated workflow: on <code>pull_request</code> open/sync → Terraform plan/apply; on merge/close → destroy.</li>
+                  <li>Hardened security: GitHub Actions → AWS via short‑lived OIDC; least‑privilege IAM; no long‑lived secrets.</li>
+                  <li>Added cost controls: nightly sweeper and TTL guard; consistent tagging for reporting.</li>
+                  <li>Enforced quality gates: smoke tests + required status checks.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5) ADINT Research Project (condensed) -->
+        <article class="card project" aria-expanded="false">
+          <div class="body">
+            <div class="project-header">
+              <span class="project-title">ADINT Research Project</span>
+            </div>
+            <div class="project-body" id="p5-body">
+              <p class="muted">Completed a consent‑based study using ad platforms as measurement channels to demonstrate privacy exposure while remaining compliant.</p>
+              <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p5-more">Read more</button>
+              <div class="more" id="p5-more">
+                <ul class="muted bullets">
+                  <li>Captured signals: click IDs (gclid/fbclid), UTMs, and first‑party logs.</li>
+                  <li>Ran experiments: micro‑budget re‑reach, geofenced presence check, interest delivery validation.</li>
+                  <li>Maintained ethics: written consent, no sensitive categories, minimal spend, strict ToS alignment.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="row">
+        <span>© <span id="year"></span> Javier Hernandez Vantuyl</span>
+        <span class="muted">Built with HTML & CSS</span>
+      </div>
+    </footer>
+  </main>
+
+  <script src="assets/main.js" defer></script>
+</body>
+</html>
