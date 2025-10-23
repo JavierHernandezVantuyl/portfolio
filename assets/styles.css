@@ -27,10 +27,11 @@ a { color: inherit; text-decoration: none; }
 /* Nav */
 .nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px); background: rgba(10,10,11,0.6); border-bottom: 1px solid #202226; box-shadow: 0 6px 20px rgba(0,0,0,.25); backdrop-filter: saturate(140%) blur(10px); }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-.nav a { padding: 10px 12px; border-radius: 8px; font-size: 14px; color: var(--muted); transition: color .15s ease, background .15s ease; }
+.nav a { display:inline-flex; align-items:center; gap:8px; padding: 10px 12px; border-radius: 8px; font-size: 14px; color: var(--muted); transition: color .15s ease, background .15s ease; }
 .nav a:hover { background: #15161b; color: #f4f4f5; }
 .nav.scrolled { background: rgba(10,10,11,0.75); border-bottom-color: #2a2d34; }
 .brand { font-weight:700; color:#fff; }
+.nav .icon { opacity:.9; display:inline-flex; }
 
 /* Hero */
 .hero { padding: 56px 0 24px; }
