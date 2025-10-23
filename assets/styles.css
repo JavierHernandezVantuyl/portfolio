@@ -1,6 +1,6 @@
 /* Global theme and layout */
 :root {
-  --bg: linear-gradient(180deg, #0d1024 0%, #0a0c1a 100%);
+  --bg: linear-gradient(180deg, #0d1024 0%, #0a0c1a 50%, #0d1024 100%);
   --panel: #111214;
   --muted: #a1a1aa;
   --text: #e9e9ec;
@@ -18,7 +18,11 @@ html, body { height: 100%; }
 body {
   margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
   color: var(--text);
-  background: radial-gradient(1200px 600px at 50% var(--glare-y, -10%), rgba(155,135,245,var(--glare-o, 0.04)), transparent), var(--bg);
+  background: 
+    radial-gradient(1200px 600px at 50% var(--glare-y, -10%), rgba(155,135,245,var(--glare-o, 0.04)), transparent),
+    var(--bg),
+    linear-gradient(180deg, #0d1024 0%, #0a0c1a 100%);
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 a { color: inherit; text-decoration: none; }
@@ -112,7 +116,7 @@ textarea { min-height: 120px; resize: vertical; }
 ::placeholder { color: #64748b; }
 
 /* Background systems */
-.glass-flow { position: fixed; inset: -20vh -20vw; pointer-events: none; z-index: 0; background: radial-gradient(28vw 28vh at 12% 10%, rgba(155,135,245,0.12), transparent 60%), radial-gradient(36vw 36vh at 88% 18%, rgba(239,159,118,0.10), transparent 62%), radial-gradient(22vw 22vh at 24% 82%, rgba(155,135,245,0.08), transparent 62%); filter: blur(40px) saturate(120%); opacity: var(--flow-opacity, .06); animation: flow 42s ease-in-out infinite alternate; }
+.glass-flow { position: fixed; inset: -30vh -30vw; pointer-events: none; z-index: 0; background: radial-gradient(35vw 35vh at 12% 10%, rgba(155,135,245,0.12), transparent 65%), radial-gradient(40vw 40vh at 88% 18%, rgba(239,159,118,0.10), transparent 65%), radial-gradient(30vw 30vh at 24% 82%, rgba(155,135,245,0.08), transparent 65%), radial-gradient(25vw 25vh at 75% 70%, rgba(239,159,118,0.06), transparent 60%); filter: blur(45px) saturate(125%); opacity: var(--flow-opacity, .06); animation: flow 42s ease-in-out infinite alternate; }
 @keyframes flow { 0% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(-1.5%, 0.8%, 0) scale(1.02); } 100% { transform: translate3d(1.2%, -0.6%, 0) scale(1); } }
 .grid-overlay { position: fixed; inset: 0; pointer-events: none; z-index: 1; background-image: linear-gradient(to right, rgba(161,161,170,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(161,161,170,0.06) 1px, transparent 1px); background-size: 40px 40px; background-position: var(--grid-x, 0px) var(--grid-y, 0px); mix-blend-mode: soft-light; opacity: .25; }
 
