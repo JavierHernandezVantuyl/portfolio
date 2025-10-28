@@ -88,10 +88,13 @@ window.submitContact = submitContact;
   targets.forEach(el => io.observe(el));
 })();
 
-// Tilt micro-interaction
+// Tilt micro-interaction (disabled on touch devices)
 (() => {
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReduced) return;
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  
+  if (prefersReduced || isTouchDevice) return;
+  
   const tiltCards = document.querySelectorAll('.card');
   tiltCards.forEach((card) => {
     let rafId = null;

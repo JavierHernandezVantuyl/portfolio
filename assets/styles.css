@@ -111,9 +111,25 @@ textarea { min-height: 120px; resize: vertical; }
 /* Title gradient */
 .title.gradient { background: linear-gradient(90deg, #d9d7e9, #9b87f5); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 6px 18px rgba(155,135,245,0.18)); }
 
-/* Accessibility */
+/* Accessibility and touch improvements */
 :focus-visible { outline: 2px solid #9b87f5; outline-offset: 2px; border-radius: 8px; }
 ::placeholder { color: #64748b; }
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  /* Disable hover effects on touch devices */
+  .card:hover { transform: none; box-shadow: 0 8px 28px rgba(0,0,0,0.35); border-color: #1e293b; }
+  .timeline-card:hover { transform: none; box-shadow: 0 8px 28px rgba(0,0,0,0.35); border-color: #2a2d34; }
+  .btn:hover { transform: none; }
+  
+  /* Larger touch targets */
+  .btn { min-height: 44px; }
+  .nav a { min-height: 44px; }
+  .read-more { min-height: 44px; padding: 12px 16px; }
+  
+  /* Remove tilt effects on touch */
+  .card { transform: none !important; }
+}
 
 /* Background systems */
 .glass-flow { position: fixed; inset: -30vh -30vw; pointer-events: none; z-index: 0; background: radial-gradient(35vw 35vh at 12% 10%, rgba(155,135,245,0.12), transparent 65%), radial-gradient(40vw 40vh at 88% 18%, rgba(239,159,118,0.10), transparent 65%), radial-gradient(30vw 30vh at 24% 82%, rgba(155,135,245,0.08), transparent 65%), radial-gradient(25vw 25vh at 75% 70%, rgba(239,159,118,0.06), transparent 60%); filter: blur(45px) saturate(125%); opacity: var(--flow-opacity, .06); animation: flow 42s ease-in-out infinite alternate; }
@@ -128,14 +144,102 @@ body.gate-lock { overflow: hidden; }
 /* Responsive */
 @media (min-width: 800px){ .split { display:grid; grid-template-columns: 2fr 1fr; gap:16px; } }
 
-/* Mobile improvements */
-@media (max-width: 640px) {
+/* Mobile-first responsive design */
+@media (max-width: 768px) {
+  .container { padding: 20px; }
+  
+  /* Navigation improvements */
+  .nav-inner { 
+    flex-direction: column; 
+    gap: 12px; 
+    height: auto; 
+    padding: 12px 0; 
+  }
+  .nav-inner nav.row { 
+    width: 100%; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+    gap: 8px; 
+  }
+  .brand { font-size: 18px; }
+  
+  /* Typography scaling */
+  .title { font-size: clamp(28px, 6vw, 48px); margin: 16px 0 12px; }
+  .lead { font-size: clamp(16px, 4vw, 20px); line-height: 1.7; }
+  h2 { font-size: 22px; margin: 0 0 20px; }
+  
+  /* Button improvements */
+  .btn { 
+    height: 48px; 
+    padding: 0 18px; 
+    font-size: 15px; 
+    min-width: 120px;
+  }
+  .btns { gap: 10px; margin-top: 20px; }
+  
+  /* Card and grid improvements */
+  .grid.cards { grid-template-columns: 1fr; gap: 20px; }
+  .card .body { padding: 20px; min-height: auto; }
+  .hero-panel { padding: 24px; margin: 0 -4px; }
+  
+  /* Timeline improvements */
+  .timeline-item { grid-template-columns: 40px 1fr; gap: 16px; }
+  .timeline-dot { margin-top: 20px; }
+  .timeline-card { padding: 18px; }
+  .timeline-meta { white-space: normal; font-size: 13px; }
+  
+  /* Form improvements */
+  input, textarea { 
+    padding: 14px 16px; 
+    font-size: 16px; /* Prevents zoom on iOS */
+    border-radius: 14px;
+  }
+  textarea { min-height: 140px; }
+  
+  /* Pills and chips */
+  .pill { padding: 8px 12px; font-size: 13px; }
+  .chips { gap: 6px; }
+  
+  /* Footer */
+  .footer .row { 
+    flex-direction: column; 
+    gap: 8px; 
+    text-align: center; 
+  }
+}
+
+@media (max-width: 480px) {
   .container { padding: 16px; }
-  .nav-inner { flex-wrap: wrap; gap: 8px; height: auto; padding: 8px 0; }
-  .nav-inner nav.row { width: 100%; justify-content: center; flex-wrap: wrap; gap: 8px; }
-  .brand { font-size: 16px; }
-  .btn { height: 44px; }
-  .timeline-item { grid-template-columns: 32px 1fr; }
-  .timeline-meta { white-space: normal; }
+  
+  /* Extra small screens */
+  .title { font-size: clamp(24px, 8vw, 40px); }
+  .lead { font-size: clamp(15px, 5vw, 18px); }
+  
+  .btn { 
+    height: 52px; 
+    padding: 0 20px; 
+    font-size: 16px;
+    width: 100%;
+    justify-content: center;
+  }
+  .btns { 
+    flex-direction: column; 
+    gap: 12px; 
+    margin-top: 24px; 
+  }
+  
+  .hero-panel { padding: 20px; }
+  .card .body { padding: 18px; }
+  
+  /* Navigation for very small screens */
+  .nav-inner nav.row { gap: 6px; }
+  .nav a { padding: 8px 10px; font-size: 13px; }
+  
+  /* Timeline adjustments */
+  .timeline-item { grid-template-columns: 32px 1fr; gap: 12px; }
+  .timeline-card { padding: 16px; }
+  
+  /* Form adjustments */
+  input, textarea { padding: 12px 14px; }
 }
 
