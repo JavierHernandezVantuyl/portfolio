@@ -276,20 +276,50 @@
     @media (max-width: 768px) {
       .container { padding: 20px; }
       
-      /* Navigation improvements */
+      /* Clean mobile navigation */
       .nav-inner { 
-        flex-direction: column; 
-        gap: 12px; 
-        height: auto; 
-        padding: 12px 0; 
+        flex-direction: row; 
+        justify-content: space-between;
+        align-items: center;
+        height: 60px; 
+        padding: 0; 
       }
       .nav-inner nav.row { 
-        width: 100%; 
-        justify-content: center; 
-        flex-wrap: wrap; 
-        gap: 8px; 
+        display: flex;
+        gap: 4px; 
+        margin: 0;
       }
-      .brand { font-size: 18px; }
+      .brand { font-size: 16px; }
+      
+      /* Mobile nav buttons - clean and minimal */
+      .nav a {
+        padding: 8px 12px;
+        font-size: 13px;
+        border-radius: 8px;
+        background: transparent;
+        transition: all 0.2s ease;
+        min-height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .nav a:hover {
+        background: rgba(155, 135, 245, 0.1);
+        color: #9b87f5;
+      }
+      .nav a[aria-current="page"] {
+        background: rgba(155, 135, 245, 0.15);
+        color: #9b87f5;
+        font-weight: 600;
+      }
+      
+      /* Hide labels on very small screens, show only icons */
+      .nav .label {
+        display: none;
+      }
+      .nav .icon {
+        margin: 0;
+      }
       
       /* Typography scaling */
       .title { font-size: clamp(28px, 6vw, 48px); margin: 16px 0 12px; }
@@ -359,9 +389,21 @@
       .hero-panel { padding: 20px; }
       .card .body { padding: 18px; }
       
-      /* Navigation for very small screens */
-      .nav-inner nav.row { gap: 6px; }
-      .nav a { padding: 8px 10px; font-size: 13px; }
+      /* Ultra-compact navigation for very small screens */
+      .nav-inner { 
+        height: 56px;
+        padding: 0 4px;
+      }
+      .nav-inner nav.row { 
+        gap: 2px; 
+      }
+      .nav a { 
+        padding: 6px 8px; 
+        font-size: 12px;
+        min-height: 32px;
+        border-radius: 6px;
+      }
+      .brand { font-size: 14px; }
       
       /* Timeline adjustments */
       .timeline-item { grid-template-columns: 32px 1fr; gap: 12px; }
