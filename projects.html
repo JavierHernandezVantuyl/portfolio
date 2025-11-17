@@ -35,16 +35,17 @@
           <div class="body">
             <div class="project-header">
               <span class="project-title">AWS Incident Co‑Pilot - Cloud Support Toolkit</span>
+              <a href="https://github.com/JavierHernandezVantuyl/aws-incident-copilot" target="_blank" rel="noopener" class="pill soft" style="font-size:12px;">GitHub →</a>
             </div>
             <div class="project-body" id="p1-body">
-              <p class="muted">Built a mock‑first CLI that triages common AWS incidents and auto‑packages an evidence bundle with a Slack‑ready summary.</p>
+              <p class="muted">Automated CLI tool that monitors AWS infrastructure, detects incidents, collects evidence from CloudWatch/CloudTrail, and sends alerts—accessible to users without extensive DevOps expertise.</p>
               <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p1-more">Read more</button>
               <div class="more" id="p1-more">
                 <ul class="muted bullets">
-                  <li>Shipped deterministic scenarios: 5xx spikes, throttling, <code>AccessDenied</code>, DLQ backlog.</li>
-                  <li>Produced an evidence bundle (<code>timeline.md</code>, lightweight charts, manifest, raw snippets) zipped for hand‑off.</li>
-                  <li>Included adapters: mock (default), optional LocalStack & AWS read‑only; documented a 5–7 min walkthrough.</li>
-                  <li>Stack: Python, Typer, Rich, Matplotlib; JSON datasets; modular checks/adapters.</li>
+                  <li>Smart detection for EC2 CPU spikes, Lambda errors, Bedrock token overages, and S3 permission issues with configurable thresholds.</li>
+                  <li>Automated evidence collection from CloudWatch and CloudTrail data for incident investigation.</li>
+                  <li>Flexible alerting via SNS topics and email notifications; includes mock testing mode for safe testing before AWS connection.</li>
+                  <li>Stack: Python 3.9+, AWS SDK (CloudWatch, CloudTrail, EC2, Lambda, S3, SNS, Bedrock, DynamoDB), pytest, GitHub Actions CI/CD.</li>
                 </ul>
               </div>
             </div>
