@@ -30,78 +30,110 @@
     <section aria-labelledby="proj-head">
       <h1 id="proj-head" class="title gradient">Selected Projects</h1>
       <div class="grid cards" id="projects-grid">
-        <!-- 1) AWS Incident Co-Pilot - Cloud Support Toolkit -->
+        <!-- 1) AWS Incident Co-Pilot -->
         <article class="card project" aria-expanded="false">
           <div class="body">
             <div class="project-header">
-              <span class="project-title">AWS Incident Co‑Pilot - Cloud Support Toolkit</span>
-              <a href="https://github.com/JavierHernandezVantuyl/aws-incident-copilot" target="_blank" rel="noopener" class="pill soft" style="font-size:12px;">GitHub →</a>
+              <span class="project-title">AWS Incident Co‑Pilot</span>
+              <a href="https://github.com/JavierHernandezVantuyl/aws-incident-copilot" target="_blank" rel="noopener" class="project-link">
+                <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                View on GitHub
+              </a>
             </div>
             <div class="project-body" id="p1-body">
               <p class="muted">Automated CLI tool that monitors AWS infrastructure, detects incidents, collects evidence from CloudWatch/CloudTrail, and sends alerts—accessible to users without extensive DevOps expertise.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">AWS</span>
+                <span class="tech-tag">CloudWatch</span>
+                <span class="tech-tag">CloudTrail</span>
+                <span class="tech-tag">pytest</span>
+                <span class="tech-tag">CI/CD</span>
+              </div>
               <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p1-more">Read more</button>
               <div class="more" id="p1-more">
                 <ul class="muted bullets">
                   <li>Smart detection for EC2 CPU spikes, Lambda errors, Bedrock token overages, and S3 permission issues with configurable thresholds.</li>
                   <li>Automated evidence collection from CloudWatch and CloudTrail data for incident investigation.</li>
                   <li>Flexible alerting via SNS topics and email notifications; includes mock testing mode for safe testing before AWS connection.</li>
-                  <li>Stack: Python 3.9+, AWS SDK (CloudWatch, CloudTrail, EC2, Lambda, S3, SNS, Bedrock, DynamoDB), pytest, GitHub Actions CI/CD.</li>
+                  <li>Supports EC2, Lambda, S3, SNS, Bedrock, and DynamoDB monitoring with modular architecture.</li>
                 </ul>
               </div>
             </div>
           </div>
         </article>
 
-        <!-- 2) Cloud Blueprint Exporter - AWS → Terraform -->
+        <!-- 2) Cloud Blueprint Exporter -->
         <article class="card project" aria-expanded="false">
           <div class="body">
             <div class="project-header">
-              <span class="project-title">Cloud Blueprint Exporter - AWS → Terraform</span>
+              <span class="project-title">Cloud Blueprint Exporter</span>
             </div>
             <div class="project-body" id="p2-body">
-              <p class="muted">Delivered a read‑only exporter that generates plan‑ready Terraform from an existing AWS account using opinionated modules and variables.</p>
+              <p class="muted">Read‑only exporter that generates plan‑ready Terraform from an existing AWS account using opinionated modules and variables.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">Terraform</span>
+                <span class="tech-tag">AWS SDK</span>
+                <span class="tech-tag">GitHub Actions</span>
+                <span class="tech-tag">OIDC</span>
+                <span class="tech-tag">HCL</span>
+              </div>
               <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p2-more">Read more</button>
               <div class="more" id="p2-more">
                 <ul class="muted bullets">
                   <li>Inventoried core services and emitted HCL modules, variables, and outputs suitable for <code>terraform plan</code>.</li>
                   <li>Added safety rails: allow/deny lists, redaction, region filters, and a drift summary; enforced consistent tagging (<code>env</code>, <code>cost-center</code>).</li>
                   <li>Implemented a CI demo: GitHub Actions → AWS via OIDC (short‑lived creds) with dry‑run vs. write; 5–7 min export + plan.</li>
-                  <li>Stack: Terraform, AWS SDK, JSON manifests; produced reproducible, reviewable outputs.</li>
+                  <li>Produced reproducible, reviewable outputs with JSON manifests.</li>
                 </ul>
               </div>
             </div>
           </div>
         </article>
 
-        <!-- 3) Intune Zero‑Touch Lab - Endpoint/MDM -->
+        <!-- 3) Intune Zero‑Touch Lab -->
         <article class="card project" aria-expanded="false">
           <div class="body">
             <div class="project-header">
-              <span class="project-title">Intune Zero‑Touch Lab - Endpoint/MDM</span>
+              <span class="project-title">Intune Zero‑Touch Lab</span>
             </div>
             <div class="project-body" id="p3-body">
-              <p class="muted">Built a cost‑free lab that proves zero‑touch enrollment → baseline config → compliance → Conditional Access (Report‑only) → Proactive Remediations.</p>
+              <p class="muted">Cost‑free lab demonstrating zero‑touch enrollment, baseline config, compliance, Conditional Access, and Proactive Remediations.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">Microsoft Intune</span>
+                <span class="tech-tag">Autopilot</span>
+                <span class="tech-tag">PowerShell</span>
+                <span class="tech-tag">M365</span>
+                <span class="tech-tag">Windows 11</span>
+              </div>
               <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p3-more">Read more</button>
               <div class="more" id="p3-more">
                 <ul class="muted bullets">
-                  <li>Configured Autopilot (hardware‑hash import) with ESP; deployed one Win32 app (Notepad++ or triage script).</li>
-                  <li>Implemented two compliance policies (e.g., BitLocker/TPM & AV/OS version) feeding CA in Report‑only.</li>
+                  <li>Configured Autopilot (hardware‑hash import) with ESP; deployed Win32 apps for endpoint management.</li>
+                  <li>Implemented compliance policies (BitLocker/TPM & AV/OS version) feeding Conditional Access in Report‑only mode.</li>
                   <li>Authored Proactive Remediations: disk cleanup, MDM agent health reset, cert renewal check.</li>
-                  <li>Ran on an M365 Dev/Trial tenant with Intune and a Windows 11 eval VM; $0 spend; CA remained non‑destructive.</li>
+                  <li>Ran on M365 Dev/Trial tenant with zero cost; CA remained non‑destructive for safe testing.</li>
                 </ul>
               </div>
             </div>
           </div>
         </article>
 
-        <!-- 4) PR Ephemeral Environments (condensed) -->
+        <!-- 4) PR Ephemeral Environments -->
         <article class="card project" aria-expanded="false">
           <div class="body">
             <div class="project-header">
               <span class="project-title">PR Ephemeral Environments</span>
             </div>
             <div class="project-body" id="p4-body">
-              <p class="muted">Implemented per‑PR preview stacks that auto‑destroy on merge/close, cutting idle cost near zero and accelerating reviews.</p>
+              <p class="muted">Per‑PR preview stacks that auto‑destroy on merge/close, cutting idle cost near zero and accelerating reviews.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">Terraform</span>
+                <span class="tech-tag">GitHub Actions</span>
+                <span class="tech-tag">AWS</span>
+                <span class="tech-tag">OIDC</span>
+                <span class="tech-tag">IAM</span>
+              </div>
               <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p4-more">Read more</button>
               <div class="more" id="p4-more">
                 <ul class="muted bullets">
@@ -115,14 +147,20 @@
           </div>
         </article>
 
-        <!-- 5) ADINT Research Project (condensed) -->
+        <!-- 5) ADINT Research Project -->
         <article class="card project" aria-expanded="false">
           <div class="body">
             <div class="project-header">
               <span class="project-title">ADINT Research Project</span>
             </div>
             <div class="project-body" id="p5-body">
-              <p class="muted">Completed a consent‑based study using ad platforms as measurement channels to demonstrate privacy exposure while remaining compliant.</p>
+              <p class="muted">Consent‑based study using ad platforms as measurement channels to demonstrate privacy exposure while remaining compliant.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">Ad Platforms</span>
+                <span class="tech-tag">Privacy Research</span>
+                <span class="tech-tag">Analytics</span>
+                <span class="tech-tag">Data Collection</span>
+              </div>
               <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p5-more">Read more</button>
               <div class="more" id="p5-more">
                 <ul class="muted bullets">
