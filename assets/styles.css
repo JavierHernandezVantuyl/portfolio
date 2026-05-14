@@ -73,7 +73,7 @@ body.cursor-hot .cursor-glow {
   top: 0;
   z-index: 50;
   background: rgba(12,13,17,0.85);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid transparent;
   backdrop-filter: blur(12px);
   transition: background .25s ease, border-color .25s ease;
 }
@@ -338,6 +338,9 @@ h2 {
   -webkit-overflow-scrolling: touch;
   margin: 0 -28px;
   padding: 0 28px 6px;
+  --rail-bleed: 28px;
+  mask-image: linear-gradient(to right, transparent 0, black var(--rail-bleed), black calc(100% - var(--rail-bleed)), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black var(--rail-bleed), black calc(100% - var(--rail-bleed)), transparent 100%);
 }
 .project-rail::-webkit-scrollbar { display: none; }
 .project-track {
@@ -714,7 +717,7 @@ textarea { min-height: 120px; resize: vertical; }
   .grid.cards { grid-template-columns: 1fr; }
   .card .body { padding: 18px; }
   .footer { flex-direction: column; text-align: center; }
-  .project-rail { margin: 0 -20px; padding: 0 20px 6px; }
+  .project-rail { margin: 0 -20px; padding: 0 20px 6px; --rail-bleed: 20px; }
 }
 @media (max-width: 480px) {
   .btns { flex-direction: column; }
