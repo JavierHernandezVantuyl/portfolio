@@ -72,10 +72,10 @@ body.cursor-hot .cursor-glow {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(12,13,17,0.85);
+  background: transparent;
   border-bottom: 1px solid transparent;
-  backdrop-filter: blur(12px);
-  transition: background .25s ease, border-color .25s ease;
+  backdrop-filter: none;
+  transition: background .3s ease, border-color .3s ease, backdrop-filter .3s ease;
 }
 .nav-inner {
   display: flex;
@@ -114,6 +114,7 @@ body.cursor-hot .cursor-glow {
 .nav.scrolled {
   background: rgba(12,13,17,0.94);
   border-bottom-color: var(--border-hi);
+  backdrop-filter: blur(12px);
 }
 .nav.scrolled .nav-inner { height: 48px; }
 .nav.scrolled .brand     { font-size: 13.5px; }
@@ -338,9 +339,18 @@ h2 {
   -webkit-overflow-scrolling: touch;
   margin: 0 -28px;
   padding: 0 28px 6px;
-  --rail-bleed: 28px;
-  mask-image: linear-gradient(to right, transparent 0, black var(--rail-bleed), black calc(100% - var(--rail-bleed)), transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0, black var(--rail-bleed), black calc(100% - var(--rail-bleed)), transparent 100%);
+}
+.project-rail.fade-left {
+  mask-image: linear-gradient(to right, transparent 0, black 68px, black 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black 68px, black 100%);
+}
+.project-rail.fade-right {
+  mask-image: linear-gradient(to left, transparent 0, black 68px, black 100%);
+  -webkit-mask-image: linear-gradient(to left, transparent 0, black 68px, black 100%);
+}
+.project-rail.fade-left.fade-right {
+  mask-image: linear-gradient(to right, transparent 0, black 68px, black calc(100% - 68px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black 68px, black calc(100% - 68px), transparent 100%);
 }
 .project-rail::-webkit-scrollbar { display: none; }
 .project-track {
@@ -717,7 +727,7 @@ textarea { min-height: 120px; resize: vertical; }
   .grid.cards { grid-template-columns: 1fr; }
   .card .body { padding: 18px; }
   .footer { flex-direction: column; text-align: center; }
-  .project-rail { margin: 0 -20px; padding: 0 20px 6px; --rail-bleed: 20px; }
+  .project-rail { margin: 0 -20px; padding: 0 20px 6px; }
 }
 @media (max-width: 480px) {
   .btns { flex-direction: column; }
