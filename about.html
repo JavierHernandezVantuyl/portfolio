@@ -3,70 +3,115 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About - Javier Hernandez Vantuyl</title>
+  <title>About – Javier Hernandez Vantuyl</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="favicon.svg" />
-  <meta name="description" content="About Javier Hernandez Vantuyl - Cybersecurity & Cloud Infrastructure engineer." />
+  <meta name="description" content="About Javier Hernandez Vantuyl – cybersecurity &amp; cloud infrastructure engineer." />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
-  <div class="glass-flow" aria-hidden="true"></div>
-  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <div class="cursor-glow" aria-hidden="true"></div>
 
   <header class="nav">
     <div class="container nav-inner">
       <a href="index.html" class="brand">Javier Hernandez Vantuyl</a>
-      <nav class="row" aria-label="Primary">
-        <a href="index.html"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg></span><span class="label">Home</span></a>
-        <a href="about.html" aria-current="page"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Z"/><path d="M3 21a9 9 0 0 1 18 0"/></svg></span><span class="label">About</span></a>
-        <a href="experience.html"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v11a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3Z"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 11h18"/></svg></span><span class="label">Experience</span></a>
-        <a href="projects.html"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h6l2 2h10v9a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3Z"/><path d="M3 7V5a2 2 0 0 1 2-2h4l2 2h4"/></svg></span><span class="label">Projects</span></a>
-        <a href="contact.html"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 6 8 6 8-6"/><rect x="4" y="6" width="16" height="12" rx="2"/></svg></span><span class="label">Contact</span></a>
+      <nav aria-label="Primary">
+        <a href="index.html"><span class="icon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg></span><span class="label">Home</span></a>
+        <a href="about.html" aria-current="page"><span class="icon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Z"/><path d="M3 21a9 9 0 0 1 18 0"/></svg></span><span class="label">About</span></a>
+        <a href="experience.html"><span class="icon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v11a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3Z"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 11h18"/></svg></span><span class="label">Experience</span></a>
+        <a href="projects.html"><span class="icon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h6l2 2h10v9a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3Z"/><path d="M3 7V5a2 2 0 0 1 2-2h4l2 2h4"/></svg></span><span class="label">Projects</span></a>
+        <a href="contact.html"><span class="icon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 6 8 6 8-6"/><rect x="4" y="6" width="16" height="12" rx="2"/></svg></span><span class="label">Contact</span></a>
       </nav>
     </div>
+    <span class="nav-progress" aria-hidden="true"></span>
   </header>
 
   <main class="container">
-    <section aria-labelledby="about-head">
-      <span class="chip">Remote-first</span>
-      <h1 id="about-head" class="title gradient">About</h1>
+
+    <h1 class="page-title">About</h1>
+
+    <section class="section-flush" aria-labelledby="about-head">
+      <h2 id="about-head">Profile</h2>
       <div class="split">
         <div class="card"><div class="body">
-          <p class="muted">I secure and streamline cloud and IT operations with a focus on IAM, endpoint/MDM, and evidence‑ready controls. I prefer pragmatic automation, clear documentation, and systems teams actually use.</p>
-          <ul class="bullets muted">
-            <li>IAM & access control: Entra ID/SSO, least‑privilege, access reviews</li>
-            <li>Endpoint/MDM: Intune baselines, zero‑touch enrollment, compliance, Conditional Access</li>
-            <li>Cloud support: AWS fundamentals, Terraform modules, incident triage and cost guardrails</li>
-            <li>Automation & tooling: PowerShell, Bash, GitHub Actions, small CLIs</li>
-            <li>GRC & operations: ISO 27001/SOC 2 readiness with clean evidence and SOPs</li>
+          <p class="muted bio-lead">Security and cloud engineering: IAM, endpoint/MDM, and infrastructure as code. Currently building personal projects. Pragmatic over polished.</p>
+          <ul class="bullets">
+            <li>IAM: Entra ID/SSO, least-privilege reviews, lifecycle automation</li>
+            <li>Endpoint: Intune baselines, Autopilot, Conditional Access (report-only first)</li>
+            <li>Cloud: AWS triage, Terraform modules, OIDC over long-lived keys</li>
+            <li>Automation: PowerShell, Bash, GitHub Actions, small CLIs</li>
+            <li>GRC: ISO 27001 / SOC 2 evidence and SOPs</li>
           </ul>
         </div></div>
         <div class="card"><div class="body">
-          <div class="row" style="justify-content:flex-start"><span class="muted">Email</span><a class="pill soft" href="mailto:javierhernandezvantuyl@gmail.com">javierhernandezvantuyl@gmail.com</a></div>
-          <div class="row" style="margin-top:8px; justify-content:flex-start"><span class="muted">Location</span><span class="pill soft">United States (CDT)</span></div>
-          <div class="row" style="margin-top:8px; justify-content:flex-start">
-            <span class="muted">Time zones</span>
-            <span class="pill soft" style="margin-left:12px;">US Central (CDT) · Central European (CET/CEST)</span>
-          </div>
-          <div class="row" style="margin-top:8px; align-items:flex-start">
-            <span class="muted label-tight">Open to</span>
-            <div class="chips">
-              <span class="pill soft">Security Ops</span>
-              <span class="pill soft">Cloud Support Engineer</span>
-              <span class="pill soft">MDM Endpoint Management Engineer</span>
+          <div class="info-stack">
+            <div class="info-row"><span class="muted">Email</span><a class="pill soft" href="mailto:javierhernandezvantuyl@gmail.com">javierhernandezvantuyl@gmail.com</a></div>
+            <div class="info-row"><span class="muted">LinkedIn</span><a class="pill soft" href="https://www.linkedin.com/in/javier-vantuyl" target="_blank" rel="noreferrer">linkedin.com/in/javier-vantuyl</a></div>
+            <div class="info-row"><span class="muted">GitHub</span><a class="pill soft" href="https://github.com/JavierHernandezVantuyl" target="_blank" rel="noreferrer">github.com/JavierHernandezVantuyl</a></div>
+            <div class="info-row"><span class="muted">Location</span><span class="pill soft">United States (CDT)</span></div>
+            <div class="info-row"><span class="muted">Time zones</span><span class="pill soft">US Central · CET/CEST</span></div>
+            <div class="info-row"><span class="muted">Open to</span>
+              <div class="chips">
+                <span class="pill soft">Security Ops</span>
+                <span class="pill soft">Cloud Engineer</span>
+                <span class="pill soft">MDM / Endpoint</span>
+              </div>
             </div>
           </div>
         </div></div>
       </div>
     </section>
-    <footer class="footer">
-      <div class="row">
-        <span>© <span id="year"></span> Javier Hernandez Vantuyl</span>
-        <span class="muted">Built with HTML & CSS</span>
+
+    <section aria-labelledby="edu-head">
+      <h2 id="edu-head">Education</h2>
+      <div class="exp-stack">
+        <article class="exp-card">
+          <div class="exp-meta">MAY 2025</div>
+          <h3 class="exp-title">B.S. Cybersecurity</h3>
+          <div class="exp-org"><span class="exp-org-dot"></span>University of Central Missouri</div>
+          <p class="muted" style="margin:0;font-size:14px">Upsilon Pi Epsilon · Tau Kappa Epsilon</p>
+        </article>
+        <article class="exp-card">
+          <div class="exp-meta">JUL - OCT 2024</div>
+          <h3 class="exp-title">Cybersecurity Trimester Abroad</h3>
+          <div class="exp-org"><span class="exp-org-dot"></span>Griffith University, Queensland</div>
+          <p class="muted" style="margin:0;font-size:14px">Focus: Digital Forensics</p>
+        </article>
       </div>
+    </section>
+
+    <section aria-labelledby="comp-head">
+      <h2 id="comp-head">Competitions</h2>
+      <div class="card"><div class="body">
+        <ul class="bullets">
+          <li><strong style="color:var(--text)">Cyber Skyline National Cyber Security Competition:</strong> Top 8 Worldwide, 1st in Cryptography (2023)</li>
+          <li><strong style="color:var(--text)">MOREnet Missouri Cybersecurity Challenge:</strong> Finalist (2023)</li>
+          <li><strong style="color:var(--text)">CyberPatriot:</strong> Semi-Finalist Team Lead (2017-2023)</li>
+        </ul>
+      </div></div>
+    </section>
+
+    <section aria-labelledby="skills-head">
+      <h2 id="skills-head">Technical Skills</h2>
+      <div class="card"><div class="body">
+        <div class="skill-grid">
+          <div><strong>Certifications:</strong> TestOut IT Fundamentals Pro, Security Pro, ISO 27001 Foundations · <em>In progress:</em> Security+, Terraform Associate</div>
+          <div><strong>Languages &amp; Scripting:</strong> Python, Java, HTML/CSS, PowerShell, Bash, JQL, Terraform</div>
+          <div><strong>Tools &amp; Platforms:</strong> Microsoft 365, G Suite, Active Directory, Intune, AWS, Azure, Atlassian, Wireshark, Tenable, CrowdStrike</div>
+          <div><strong>Operating Systems:</strong> Windows, Windows Server, Ubuntu, Debian, Linux, Cisco IOS</div>
+        </div>
+      </div></div>
+    </section>
+
+    <footer class="footer">
+      <span>© <span id="year"></span> Javier Hernandez Vantuyl</span>
+      <span>Built with HTML &amp; CSS</span>
     </footer>
+
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="assets/main.js" defer></script>
 </body>
 </html>

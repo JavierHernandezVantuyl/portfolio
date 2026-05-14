@@ -3,219 +3,236 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Projects - Javier Hernandez Vantuyl</title>
+  <title>Projects – Javier Hernandez Vantuyl</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="favicon.svg" />
   <meta name="description" content="Selected projects by Javier Hernandez Vantuyl." />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
-  <div class="glass-flow" aria-hidden="true"></div>
-  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <div class="cursor-glow" aria-hidden="true"></div>
 
   <header class="nav">
     <div class="container nav-inner">
       <a href="index.html" class="brand">Javier Hernandez Vantuyl</a>
-      <nav class="row" aria-label="Primary">
-        <a href="index.html"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg></span><span class="label">Home</span></a>
-        <a href="about.html"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Z"/><path d="M3 21a9 9 0 0 1 18 0"/></svg></span><span class="label">About</span></a>
-        <a href="experience.html"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v11a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3Z"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 11h18"/></svg></span><span class="label">Experience</span></a>
-        <a href="projects.html" aria-current="page"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h6l2 2h10v9a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3Z"/><path d="M3 7V5a2 2 0 0 1 2-2h4l2 2h4"/></svg></span><span class="label">Projects</span></a>
-        <a href="contact.html"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 6 8 6 8-6"/><rect x="4" y="6" width="16" height="12" rx="2"/></svg></span><span class="label">Contact</span></a>
+      <nav aria-label="Primary">
+        <a href="index.html"><span class="icon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg></span><span class="label">Home</span></a>
+        <a href="about.html"><span class="icon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Z"/><path d="M3 21a9 9 0 0 1 18 0"/></svg></span><span class="label">About</span></a>
+        <a href="experience.html"><span class="icon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v11a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3Z"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 11h18"/></svg></span><span class="label">Experience</span></a>
+        <a href="projects.html" aria-current="page"><span class="icon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h6l2 2h10v9a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3Z"/><path d="M3 7V5a2 2 0 0 1 2-2h4l2 2h4"/></svg></span><span class="label">Projects</span></a>
+        <a href="contact.html"><span class="icon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 6 8 6 8-6"/><rect x="4" y="6" width="16" height="12" rx="2"/></svg></span><span class="label">Contact</span></a>
       </nav>
     </div>
+    <span class="nav-progress" aria-hidden="true"></span>
   </header>
 
   <main class="container">
-    <section aria-labelledby="proj-head">
-      <h1 id="proj-head" class="title gradient">Selected Projects</h1>
-      <div class="grid cards" id="projects-grid">
-        <!-- 1) AWS Incident Co-Pilot -->
-        <article class="card project" aria-expanded="false">
-          <div class="body">
-            <div class="project-header">
-              <span class="project-title">AWS Incident Co‑Pilot</span>
-              <a href="https://github.com/JavierHernandezVantuyl/aws-incident-copilot" target="_blank" rel="noopener" class="project-link">
-                <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-                View on GitHub
-              </a>
-            </div>
-            <div class="project-body" id="p1-body">
-              <p class="muted">Automated CLI tool that monitors AWS infrastructure, detects incidents, collects evidence from CloudWatch/CloudTrail, and sends alerts—accessible to users without extensive DevOps expertise.</p>
-              <div class="tech-tags">
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">AWS</span>
-                <span class="tech-tag">CloudWatch</span>
-                <span class="tech-tag">CloudTrail</span>
-                <span class="tech-tag">pytest</span>
-                <span class="tech-tag">CI/CD</span>
-              </div>
-              <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p1-more">Read more</button>
-              <div class="more" id="p1-more">
-                <ul class="muted bullets">
-                  <li>Smart detection for EC2 CPU spikes, Lambda errors, Bedrock token overages, and S3 permission issues with configurable thresholds.</li>
-                  <li>Automated evidence collection from CloudWatch and CloudTrail data for incident investigation.</li>
-                  <li>Flexible alerting via SNS topics and email notifications; includes mock testing mode for safe testing before AWS connection.</li>
-                  <li>Supports EC2, Lambda, S3, SNS, Bedrock, and DynamoDB monitoring with modular architecture.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </article>
 
-        <!-- 2) Cloud Blueprint Exporter -->
-        <article class="card project" aria-expanded="false">
-          <div class="body">
-            <div class="project-header">
-              <span class="project-title">Cloud Blueprint Exporter</span>
-            </div>
-            <div class="project-body" id="p2-body">
-              <p class="muted">Read‑only exporter that generates plan‑ready Terraform from an existing AWS account using opinionated modules and variables.</p>
-              <div class="tech-tags">
-                <span class="tech-tag">Terraform</span>
-                <span class="tech-tag">AWS SDK</span>
-                <span class="tech-tag">GitHub Actions</span>
-                <span class="tech-tag">OIDC</span>
-                <span class="tech-tag">HCL</span>
-              </div>
-              <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p2-more">Read more</button>
-              <div class="more" id="p2-more">
-                <ul class="muted bullets">
-                  <li>Inventoried core services and emitted HCL modules, variables, and outputs suitable for <code>terraform plan</code>.</li>
-                  <li>Added safety rails: allow/deny lists, redaction, region filters, and a drift summary; enforced consistent tagging (<code>env</code>, <code>cost-center</code>).</li>
-                  <li>Implemented a CI demo: GitHub Actions → AWS via OIDC (short‑lived creds) with dry‑run vs. write; 5–7 min export + plan.</li>
-                  <li>Produced reproducible, reviewable outputs with JSON manifests.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </article>
+    <h1 class="page-title">Selected Projects</h1>
 
-        <!-- 3) Intune Zero‑Touch Lab -->
-        <article class="card project" aria-expanded="false">
-          <div class="body">
-            <div class="project-header">
-              <span class="project-title">Intune Zero‑Touch Lab</span>
-            </div>
-            <div class="project-body" id="p3-body">
-              <p class="muted">Cost‑free lab demonstrating zero‑touch enrollment, baseline config, compliance, Conditional Access, and Proactive Remediations.</p>
-              <div class="tech-tags">
-                <span class="tech-tag">Microsoft Intune</span>
-                <span class="tech-tag">Autopilot</span>
-                <span class="tech-tag">PowerShell</span>
-                <span class="tech-tag">M365</span>
-                <span class="tech-tag">Windows 11</span>
-              </div>
-              <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p3-more">Read more</button>
-              <div class="more" id="p3-more">
-                <ul class="muted bullets">
-                  <li>Configured Autopilot (hardware‑hash import) with ESP; deployed Win32 apps for endpoint management.</li>
-                  <li>Implemented compliance policies (BitLocker/TPM & AV/OS version) feeding Conditional Access in Report‑only mode.</li>
-                  <li>Authored Proactive Remediations: disk cleanup, MDM agent health reset, cert renewal check.</li>
-                  <li>Ran on M365 Dev/Trial tenant with zero cost; CA remained non‑destructive for safe testing.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </article>
+    <section class="section-flush" aria-labelledby="proj-head">
+      <h2 id="proj-head">Open Source &amp; Concepts</h2>
 
-        <!-- 4) PR Ephemeral Environments -->
-        <article class="card project" aria-expanded="false">
-          <div class="body">
-            <div class="project-header">
-              <span class="project-title">PR Ephemeral Environments</span>
-            </div>
-            <div class="project-body" id="p4-body">
-              <p class="muted">Per‑PR preview stacks that auto‑destroy on merge/close, cutting idle cost near zero and accelerating reviews.</p>
-              <div class="tech-tags">
-                <span class="tech-tag">Terraform</span>
-                <span class="tech-tag">GitHub Actions</span>
-                <span class="tech-tag">AWS</span>
-                <span class="tech-tag">OIDC</span>
-                <span class="tech-tag">IAM</span>
-              </div>
-              <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p4-more">Read more</button>
-              <div class="more" id="p4-more">
-                <ul class="muted bullets">
-                  <li>Automated workflow: on <code>pull_request</code> open/sync → Terraform plan/apply; on merge/close → destroy.</li>
-                  <li>Hardened security: GitHub Actions → AWS via short‑lived OIDC; least‑privilege IAM; no long‑lived secrets.</li>
-                  <li>Added cost controls: nightly sweeper and TTL guard; consistent tagging for reporting.</li>
-                  <li>Enforced quality gates: smoke tests + required status checks.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </article>
+      <div class="project-rail" role="region" aria-label="Project carousel">
+        <div class="project-track">
 
-        <!-- 5) ADINT Research Project -->
-        <article class="card project" aria-expanded="false">
-          <div class="body">
-            <div class="project-header">
-              <span class="project-title">ADINT Research Project</span>
-            </div>
-            <div class="project-body" id="p5-body">
-              <p class="muted">Consent‑based study using ad platforms as measurement channels to demonstrate privacy exposure while remaining compliant.</p>
+          <article class="project-card" data-project="aws-incident-copilot" aria-label="AWS Incident Co-Pilot: open details">
+            <div class="body">
+              <div class="project-header">
+                <span class="project-title">AWS Incident Co-Pilot</span>
+                <a href="https://github.com/JavierHernandezVantuyl/aws-incident-copilot" target="_blank" rel="noopener" class="project-link" onclick="event.stopPropagation()">
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                  GitHub
+                </a>
+              </div>
+              <p class="project-summary">CLI that monitors AWS infrastructure, detects incidents, collects evidence from CloudWatch/CloudTrail, and sends alerts. Built so non-DevOps engineers can run it.</p>
               <div class="tech-tags">
-                <span class="tech-tag">Ad Platforms</span>
-                <span class="tech-tag">Privacy Research</span>
-                <span class="tech-tag">Analytics</span>
-                <span class="tech-tag">Data Collection</span>
+                <span class="tech-tag">Python</span><span class="tech-tag">AWS</span><span class="tech-tag">CloudWatch</span><span class="tech-tag">CloudTrail</span><span class="tech-tag">pytest</span>
               </div>
-              <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p5-more">Read more</button>
-              <div class="more" id="p5-more">
-                <ul class="muted bullets">
-                  <li>Captured signals: click IDs (gclid/fbclid), UTMs, and first‑party logs.</li>
-                  <li>Ran experiments: micro‑budget re‑reach, geofenced presence check, interest delivery validation.</li>
-                  <li>Maintained ethics: written consent, no sensitive categories, minimal spend, strict ToS alignment.</li>
-                </ul>
-              </div>
+              <span class="project-cta">View details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
             </div>
-          </div>
-        </article>
+          </article>
 
-        <!-- 6) Kubernetes Cost Optimizer -->
-        <article class="card project" aria-expanded="false">
-          <div class="body">
-            <div class="project-header">
-              <span class="project-title">Kubernetes Cost Optimizer</span>
-              <a href="https://github.com/JavierHernandezVantuyl/k8s-cost-optimizer" target="_blank" rel="noopener" class="project-link">
-                <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-                View on GitHub
-              </a>
-            </div>
-            <div class="project-body" id="p6-body">
-              <p class="muted">Enterprise‑grade multi‑cloud Kubernetes cost optimization platform with ML‑driven recommendations that reduces infrastructure costs by 35‑45%.</p>
+          <article class="project-card" data-project="k8s-cost-optimizer" aria-label="Kubernetes Cost Optimizer: open details">
+            <div class="body">
+              <div class="project-header">
+                <span class="project-title">Kubernetes Cost Optimizer</span>
+                <a href="https://github.com/JavierHernandezVantuyl/k8s-cost-optimizer" target="_blank" rel="noopener" class="project-link" onclick="event.stopPropagation()">
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                  GitHub
+                </a>
+              </div>
+              <p class="project-summary">Multi-cloud K8s cost platform with ML-driven recommendations targeting 35–45% infrastructure reduction.</p>
               <div class="tech-tags">
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">Go</span>
-                <span class="tech-tag">React</span>
-                <span class="tech-tag">Kubernetes</span>
-                <span class="tech-tag">PostgreSQL</span>
-                <span class="tech-tag">Terraform</span>
-                <span class="tech-tag">ML</span>
+                <span class="tech-tag">Python</span><span class="tech-tag">Go</span><span class="tech-tag">React</span><span class="tech-tag">Kubernetes</span><span class="tech-tag">Terraform</span>
               </div>
-              <button type="button" class="pill read-more" aria-expanded="false" aria-controls="p6-more">Read more</button>
-              <div class="more" id="p6-more">
-                <ul class="muted bullets">
-                  <li>Real‑time cost tracking and analysis across AWS, GCP, and Azure with multi‑cloud price comparison.</li>
-                  <li>ML‑powered recommendations for right‑sizing, spot instances, autoscaling, and node consolidation with 90%+ confidence scores.</li>
-                  <li>Full‑stack implementation: FastAPI backend, Kubernetes Operator (Go), React dashboard, PostgreSQL/Redis data layer.</li>
-                  <li>Comprehensive testing with 90% coverage including unit, integration, E2E, load testing, and chaos engineering.</li>
-                </ul>
-              </div>
+              <span class="project-cta">View details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
             </div>
-          </div>
-        </article>
+          </article>
+
+          <article class="project-card" data-project="pr-ephemeral" aria-label="PR Ephemeral Environments: open details">
+            <div class="body">
+              <div class="project-header">
+                <span class="project-title">PR Ephemeral Environments</span>
+                <span class="project-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M10 3v6L5 19a2 2 0 0 0 1.7 3h10.6A2 2 0 0 0 19 19l-5-10V3"/><path d="M8 14h8"/></svg>Concept</span>
+              </div>
+              <p class="project-summary">Per-PR preview stacks that auto-destroy on merge/close. Near-zero idle cost, faster reviews.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">Terraform</span><span class="tech-tag">GitHub Actions</span><span class="tech-tag">AWS</span><span class="tech-tag">OIDC</span>
+              </div>
+              <span class="project-cta">View details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+            </div>
+          </article>
+
+          <article class="project-card" data-project="cloud-blueprint" aria-label="Cloud Blueprint Exporter: open details">
+            <div class="body">
+              <div class="project-header">
+                <span class="project-title">Cloud Blueprint Exporter</span>
+                <span class="project-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M10 3v6L5 19a2 2 0 0 0 1.7 3h10.6A2 2 0 0 0 19 19l-5-10V3"/><path d="M8 14h8"/></svg>Concept</span>
+              </div>
+              <p class="project-summary">Read-only exporter that generates plan-ready Terraform from an existing AWS account using opinionated modules.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">Terraform</span><span class="tech-tag">AWS SDK</span><span class="tech-tag">GitHub Actions</span><span class="tech-tag">OIDC</span>
+              </div>
+              <span class="project-cta">View details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+            </div>
+          </article>
+
+          <article class="project-card" data-project="intune-lab" aria-label="Intune Zero-Touch Lab: open details">
+            <div class="body">
+              <div class="project-header">
+                <span class="project-title">Intune Zero-Touch Lab</span>
+                <span class="project-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M10 3v6L5 19a2 2 0 0 0 1.7 3h10.6A2 2 0 0 0 19 19l-5-10V3"/><path d="M8 14h8"/></svg>Concept</span>
+              </div>
+              <p class="project-summary">Cost-free lab demonstrating zero-touch enrollment, baseline config, compliance, Conditional Access, and remediations.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">Intune</span><span class="tech-tag">Autopilot</span><span class="tech-tag">PowerShell</span><span class="tech-tag">M365</span>
+              </div>
+              <span class="project-cta">View details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+            </div>
+          </article>
+
+          <article class="project-card" data-project="adint" aria-label="ADINT Research: open details">
+            <div class="body">
+              <div class="project-header">
+                <span class="project-title">ADINT Research</span>
+                <span class="project-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M10 3v6L5 19a2 2 0 0 0 1.7 3h10.6A2 2 0 0 0 19 19l-5-10V3"/><path d="M8 14h8"/></svg>Concept</span>
+              </div>
+              <p class="project-summary">Consent-based study using ad platforms as measurement channels to demonstrate privacy exposure while staying compliant.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">Ad Platforms</span><span class="tech-tag">Privacy</span><span class="tech-tag">Analytics</span>
+              </div>
+              <span class="project-cta">View details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <div class="rail-controls">
+        <button class="rail-btn" data-dir="-1" aria-label="Previous projects">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <div class="rail-progress" aria-hidden="true"><span></span></div>
+        <button class="rail-btn" data-dir="1" aria-label="Next projects">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
       </div>
     </section>
+
     <footer class="footer">
-      <div class="row">
-        <span>© <span id="year"></span> Javier Hernandez Vantuyl</span>
-        <span class="muted">Built with HTML & CSS</span>
-      </div>
+      <span>© <span id="year"></span> Javier Hernandez Vantuyl</span>
+      <span>Built with HTML &amp; CSS</span>
     </footer>
+
   </main>
 
+  <!-- Project drawer -->
+  <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="drawer-title">
+    <div class="drawer-backdrop" data-drawer-close></div>
+    <div class="drawer-panel" tabindex="-1">
+      <button class="drawer-close" data-drawer-close aria-label="Close details">×</button>
+      <div class="drawer-content">
+        <span class="drawer-eyebrow"></span>
+        <h2 id="drawer-title" class="drawer-title"></h2>
+        <p class="drawer-summary"></p>
+        <div class="drawer-tags"></div>
+        <ul class="drawer-bullets bullets"></ul>
+        <a class="btn primary drawer-link" target="_blank" rel="noopener" hidden></a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Project templates -->
+  <template id="tpl-aws-incident-copilot">
+    <span data-eyebrow>Open Source · Python</span>
+    <span data-title>AWS Incident Co-Pilot</span>
+    <span data-summary>CLI that monitors AWS infrastructure, detects incidents, collects evidence from CloudWatch and CloudTrail, and sends alerts. Accessible without deep DevOps expertise.</span>
+    <span data-tag>Python</span><span data-tag>AWS</span><span data-tag>CloudWatch</span><span data-tag>CloudTrail</span><span data-tag>pytest</span><span data-tag>CI/CD</span>
+    <span data-bullet>Smart detection for EC2 CPU spikes, Lambda errors, Bedrock token overages, and S3 permission issues with configurable thresholds.</span>
+    <span data-bullet>Automated evidence collection from CloudWatch and CloudTrail for incident investigation.</span>
+    <span data-bullet>Flexible alerting via SNS and email; mock testing mode for safe pre-deployment runs.</span>
+    <span data-bullet>Modular architecture covering EC2, Lambda, S3, SNS, Bedrock, and DynamoDB.</span>
+    <span data-github>https://github.com/JavierHernandezVantuyl/aws-incident-copilot</span>
+  </template>
+
+  <template id="tpl-k8s-cost-optimizer">
+    <span data-eyebrow>Open Source · Multi-cloud</span>
+    <span data-title>Kubernetes Cost Optimizer</span>
+    <span data-summary>Multi-cloud Kubernetes cost optimization platform with ML-driven recommendations targeting 35–45% infrastructure cost reduction.</span>
+    <span data-tag>Python</span><span data-tag>Go</span><span data-tag>React</span><span data-tag>Kubernetes</span><span data-tag>PostgreSQL</span><span data-tag>Terraform</span>
+    <span data-bullet>Real-time cost tracking across AWS, GCP, and Azure with multi-cloud price comparison.</span>
+    <span data-bullet>ML recommendations for right-sizing, spot instances, autoscaling, and node consolidation.</span>
+    <span data-bullet>FastAPI backend, Kubernetes Operator (Go), React dashboard, PostgreSQL/Redis data layer.</span>
+    <span data-bullet>90% test coverage: unit, integration, E2E, load, and chaos engineering.</span>
+    <span data-github>https://github.com/JavierHernandezVantuyl/k8s-cost-optimizer</span>
+  </template>
+
+  <template id="tpl-pr-ephemeral">
+    <span data-eyebrow>Concept · CI/CD</span>
+    <span data-title>PR Ephemeral Environments</span>
+    <span data-summary>Per-PR preview stacks that auto-destroy on merge/close, cutting idle cost near zero and accelerating code reviews.</span>
+    <span data-tag>Terraform</span><span data-tag>GitHub Actions</span><span data-tag>AWS</span><span data-tag>OIDC</span><span data-tag>IAM</span>
+    <span data-bullet>On <code>pull_request</code> open/sync → Terraform plan/apply; on merge/close → destroy.</span>
+    <span data-bullet>Short-lived OIDC credentials; least-privilege IAM; no long-lived secrets.</span>
+    <span data-bullet>Nightly sweeper and TTL guard for cost control; consistent tagging for reporting.</span>
+    <span data-bullet>Smoke tests + required status checks enforce quality gates.</span>
+  </template>
+
+  <template id="tpl-cloud-blueprint">
+    <span data-eyebrow>Concept · IaC</span>
+    <span data-title>Cloud Blueprint Exporter</span>
+    <span data-summary>Read-only exporter that generates plan-ready Terraform from an existing AWS account using opinionated modules and variables.</span>
+    <span data-tag>Terraform</span><span data-tag>AWS SDK</span><span data-tag>GitHub Actions</span><span data-tag>OIDC</span><span data-tag>HCL</span>
+    <span data-bullet>Inventoried core services and emitted HCL modules, variables, and outputs suitable for <code>terraform plan</code>.</span>
+    <span data-bullet>Safety rails: allow/deny lists, redaction, region filters, and drift summary; enforced consistent tagging.</span>
+    <span data-bullet>CI demo: GitHub Actions → AWS via OIDC (short-lived creds), dry-run vs. write, 5–7 min export + plan.</span>
+    <span data-bullet>Reproducible, reviewable outputs with JSON manifests.</span>
+  </template>
+
+  <template id="tpl-intune-lab">
+    <span data-eyebrow>Concept · Endpoint</span>
+    <span data-title>Intune Zero-Touch Lab</span>
+    <span data-summary>Cost-free lab demonstrating zero-touch enrollment, baseline config, compliance policies, Conditional Access, and Proactive Remediations.</span>
+    <span data-tag>Intune</span><span data-tag>Autopilot</span><span data-tag>PowerShell</span><span data-tag>M365</span><span data-tag>Windows 11</span>
+    <span data-bullet>Configured Autopilot (hardware-hash import) with ESP; deployed Win32 apps for endpoint management.</span>
+    <span data-bullet>Compliance policies (BitLocker/TPM &amp; AV/OS) feeding Conditional Access in Report-only mode.</span>
+    <span data-bullet>Proactive Remediations: disk cleanup, MDM agent health reset, cert renewal check.</span>
+    <span data-bullet>Ran on M365 Dev/Trial tenant at zero cost; CA non-destructive for safe testing.</span>
+  </template>
+
+  <template id="tpl-adint">
+    <span data-eyebrow>Research · Privacy</span>
+    <span data-title>ADINT Research Project</span>
+    <span data-summary>Consent-based study using ad platforms as measurement channels to demonstrate privacy exposure while staying compliant.</span>
+    <span data-tag>Ad Platforms</span><span data-tag>Privacy Research</span><span data-tag>Analytics</span>
+    <span data-bullet>Captured signals: click IDs (gclid/fbclid), UTMs, and first-party logs.</span>
+    <span data-bullet>Experiments: micro-budget re-reach, geofenced presence check, interest delivery validation.</span>
+    <span data-bullet>Written consent, no sensitive categories, minimal spend, strict ToS alignment.</span>
+  </template>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="assets/main.js" defer></script>
 </body>
 </html>
