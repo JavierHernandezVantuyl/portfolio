@@ -253,6 +253,8 @@ if (lenis) {
     if (progress) progress.style.transform = `scaleX(${pct})`;
     if (prev) prev.disabled = rail.scrollLeft <= 2;
     if (next) next.disabled = rail.scrollLeft >= max - 2;
+    rail.classList.toggle('fade-left', rail.scrollLeft > 4);
+    rail.classList.toggle('fade-right', rail.scrollLeft < max - 4);
   }
 
   prev?.addEventListener('click', () => step(-1));
